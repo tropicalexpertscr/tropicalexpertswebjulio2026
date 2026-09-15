@@ -1,0 +1,33 @@
+{
+  "name": "Tropical Experts Costa Rica",
+  "short_name": "Tropical Experts",
+  "description": "Traslados privados puerta a puerta en todo Costa Rica. Precio final por vehículo, impuestos incluidos.",
+  "lang": "es",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#0B0A09",
+  "theme_color": "#0B0A09",
+  "categories": ["travel", "navigation"],
+  "icons": [
+    { "src": "img/app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/app-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cotizar un traslado",
+      "short_name": "Cotizar",
+      "url": "/#cotizador",
+      "icons": [{ "src": "img/app-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Ver rutas y precios",
+      "short_name": "Rutas",
+      "url": "/#rutas",
+      "icons": [{ "src": "img/app-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

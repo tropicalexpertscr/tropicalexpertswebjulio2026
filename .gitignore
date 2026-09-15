@@ -1,0 +1,13 @@
+# Nunca subir llaves ni credenciales
+.env
+.env.*
+*.key
+
+# Basura del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Carpetas de herramientas
+node_modules/
+.vercel/
