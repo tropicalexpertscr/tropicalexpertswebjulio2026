@@ -1,6 +1,28 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/blog/index.html",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/index",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/blog/:file",
+      "destination": "/:file"
+    },
+    {
+      "source": "/img/:file",
+      "destination": "/:file"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
