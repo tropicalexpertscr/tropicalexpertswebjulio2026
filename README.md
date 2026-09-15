@@ -83,7 +83,7 @@ Sin la llave el sitio funciona igual; solo muestra el número fijo de reseñas.
 
 En `index.html`, busque `pagos:` y pegue el enlace de su cuenta de
 business.tab.travel entre las comillas de `enlace`. Mientras esté vacío, el botón
-de pago envía el carrito por WhatsApp, que también funciona.
+de pago envía el carrito por WhatsApp, que también funciona. 
 
 ### Cambiar precios o agregar rutas
 
