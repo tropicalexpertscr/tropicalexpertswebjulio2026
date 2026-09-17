@@ -277,6 +277,7 @@ p{margin:0}
 .field input::placeholder,.field textarea::placeholder{color:var(--muted-2)}
 .field input[type=date],.field input[type=time]{color-scheme:dark}
 .hint{font-size:.79rem;color:var(--muted-2);line-height:1.5}
+.b-antic{margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--brass);background:rgba(198,161,91,.07);border-radius:0 8px 8px 0;color:var(--muted)}
 .err{font-size:.79rem;color:var(--danger);display:none}
 .err.show{display:block}
 
@@ -1138,6 +1139,26 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
   font-size:1.5rem;line-height:1;cursor:pointer;padding:4px 8px}
 #appHow .ah-x:hover{color:#fff}
 #appHow .ah-ok{margin-top:18px;width:100%}
+
+/* ---- Viaje de última hora: confirmar por WhatsApp antes de pagar ---- */
+#urgScrim{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(2px);z-index:120;display:none}
+#urgScrim.on{display:block}
+#urgBox{position:fixed;z-index:121;left:50%;top:50%;transform:translate(-50%,-50%);width:min(460px,calc(100vw - 32px));
+  max-height:calc(100vh - 40px);overflow:auto;background:var(--ink-2,#141210);border:1px solid var(--brass);
+  border-radius:16px;padding:24px 22px 18px;display:none;box-shadow:0 18px 60px rgba(0,0,0,.6);text-align:center}
+#urgBox.on{display:block}
+#urgBox .urg-tag{display:inline-block;font-size:1.9rem;line-height:1;margin-bottom:8px}
+#urgBox h3{font-family:var(--f-display);font-size:1.35rem;margin:0 0 8px;color:var(--brass-hi,#e7c98b)}
+#urgBox .ah-sub{color:#e6e0d8;font-size:.95rem;margin:0 0 18px;line-height:1.55;text-align:left}
+#urgBox .ah-sub b{color:var(--brass-hi,#e7c98b);font-weight:600}
+#urgBox .ah-x{position:absolute;top:10px;right:12px;background:none;border:0;color:var(--muted,#a9a29b);
+  font-size:1.5rem;line-height:1;cursor:pointer;padding:4px 8px}
+#urgBox .ah-x:hover{color:#fff}
+#urgBox .urg-wa{display:flex;width:100%;justify-content:center;font-size:1.02rem;padding:15px 18px}
+#urgBox .urg-go{display:block;width:100%;margin-top:12px;background:none;border:0;color:var(--muted,#a9a29b);
+  font:inherit;font-size:.86rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px}
+#urgBox .urg-go:hover{color:#fff}
+#urgBox .urg-note{margin:12px 0 0;font-size:.78rem;color:var(--muted,#a9a29b)}
 </style>
 <header class="hdr">
   <div class="wrap hdr-in">
@@ -1834,6 +1855,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
         </div>
 
         <form id="bookForm" novalidate>
+          <p class="hint b-antic" data-i18n="bk.antic" data-es="Le sugerimos reservar con al menos 12 horas de anticipación; de diciembre a abril y en julio, cuando la demanda sube, conviene hacerlo con varios días. ¿Su viaje sale en menos de 12 horas? Escríbanos por WhatsApp y le confirmamos en minutos si tenemos unidad.">We suggest booking at least 12 hours ahead; from December to April and in July, when demand rises, a few days ahead is wise. Leaving in under 12 hours? Message us on WhatsApp and within minutes we confirm whether a vehicle is available.</p>
           <div id="bTrips"></div>
           <div class="b-empty" id="bEmpty" hidden>
             <p data-i18n="bk.empty" data-es="Todavía no ha agregado ningún viaje. Busque su ruta en el buscador, escoja el vehículo y agréguelo.">You have not added a trip yet. Search your route, choose the vehicle and add it.</p>
@@ -1932,13 +1954,23 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-1.2 1.3-1.1 3 .3 4.9 1.3 1.9 3 3.5 5.5 4.4 1.6.6 2.6.6 3.4.4.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.3-8 8.3z"/></svg>
 </a>
 </div><!-- /.page-scroll -->
+<div id="urgScrim"></div>
+<div id="urgBox" role="dialog" aria-modal="true" aria-labelledby="urgT">
+  <button type="button" class="ah-x" id="urgX" aria-label="Cerrar">&times;</button>
+  <span class="urg-tag" id="urgTag">⏱</span>
+  <h3 id="urgT"></h3>
+  <p class="ah-sub" id="urgP"></p>
+  <a class="btn btn--solid urg-wa" id="urgWa" href="#" target="_blank" rel="noopener"></a>
+  <button type="button" class="urg-go" id="urgGo"></button>
+  <p class="urg-note" id="urgNote"></p>
+</div>
 <div id="appScrim"></div>
 <div id="appHow" role="dialog" aria-modal="true" aria-labelledby="appHowT">
   <button type="button" class="ah-x" id="appHowX" aria-label="Cerrar">&times;</button>
   <h3 id="appHowT" data-i18n="app.t" data-es="Instalar la app">Install the app</h3>
   <p class="ah-sub" data-i18n="app.sub" data-es="Queda como un icono en su pantalla de inicio y abre a pantalla completa, sin barra del navegador.">It sits as an icon on your home screen and opens full screen, with no browser bar.</p>
   <ol id="appHowSteps"></ol>
-  <button type="button" class="btn btn--gold ah-ok" id="appHowOk" data-i18n="app.ok" data-es="Entendido">Got it</button>
+  <button type="button" class="btn btn--solid ah-ok" id="appHowOk" data-i18n="app.ok" data-es="Entendido">Got it</button>
 </div>
 
 
@@ -2041,9 +2073,17 @@ const CFG = {
   anticipoPct: 100,      // se cobra el 100 % por adelantado con enlace de pago (decisión del cliente, set 2026)
   minHorasAnticipacion: 12,
 
-  // Disponibilidad: fechas bloqueadas (AAAA-MM-DD) y días de alta demanda
-  fechasBloqueadas: ["2026-12-24","2026-12-25","2026-12-31","2027-01-01"],
-  altaDemanda:      ["2026-12-20","2026-12-21","2026-12-22","2026-12-23","2026-12-26","2026-12-27"],
+  // Temporada alta: en estas fechas de viaje NO se reserva en línea, solo por WhatsApp
+  // (la página muestra la leyenda y abre WhatsApp con los datos del viaje).
+  // La regla se enciende sola el día "activaDesde" a las 00:00 hora de Costa Rica; antes de esa
+  // fecha esas fechas se reservan normal. Puede agregar más rangos separados por coma.
+  // OJO: debe ser IGUAL a CONFIG.SOLO_WHATSAPP en Codigo.gs.
+  soloWhatsApp: [
+    { desde:"2026-12-15", hasta:"2026-12-31", activaDesde:"2026-11-01" }
+  ],
+  // Disponibilidad manual: fechas cerradas (AAAA-MM-DD) y días de alta demanda ("Últimas unidades")
+  fechasBloqueadas: [],
+  altaDemanda:      [],
   cupoDiario: 4          // unidades disponibles por día (referencial)
 };
 
@@ -3083,6 +3123,7 @@ const I18N = {
   "bk.send":"Book and get my order","bk.mail":"Send by email",
   "bk.errName":"We need your name for the booking.","bk.errEmail":"Check the email: that is where confirmation goes.",
   "bk.errRoute":"Choose the route you need.","bk.errDate":"Enter the date of your transfer.",
+  "bk.antic":"We suggest booking at least 12 hours ahead; from December to April and in July, when demand rises, a few days ahead is wise. Leaving in under 12 hours? Message us on WhatsApp and within minutes we confirm whether a vehicle is available.",
   "bk.hint":"When you book, your order number is created and you go to Tilopay's secure page to pay by card; if online payment is unavailable, we send you the payment link by WhatsApp or email. Your card details never pass through this page and, once you send the booking, your trip details are cleared from this browser. Your PDF voucher arrives by email.",
   "ft.blurb":"Door-to-door private transport across Costa Rica. Flat rates with taxes included, professional drivers and fully insured vehicles. I.C.T. licence #3946-2025.",
   "ft.nav":"Navigation","ft.routes":"Featured routes","ft.contact":"Contact",
@@ -3138,19 +3179,19 @@ const FAQ = [
    en:["What is the cancellation window?","Up to 48 hours before pick-up, with a full refund. Within 48 hours there is no refund, except for a documented flight cancellation."]},
   {es:["¿Cuánto equipaje cabe?","El Staria lleva 5 maletas grandes, el Hiace 9 y el Maxus 12, además del equipaje de mano. Si viaja con tablas de surf, coches de bebé o equipo de buceo, avísenos y asignamos la unidad adecuada."],
    en:["How much luggage fits?","The Staria takes 5 large bags, the Hiace 9 and the Maxus 12, plus hand luggage. If you travel with surfboards, strollers or diving gear, tell us and we assign the right unit."]},
-  {es:["¿Con cuánta anticipación debo reservar?","Idealmente una semana. En temporada alta (diciembre a abril y julio) recomendamos dos o tres semanas. Aun así, muchas veces conseguimos unidad con 12 horas de aviso: escríbanos y le confirmamos."],
-   en:["How far ahead should I book?","Ideally a week. In high season (December to April and July) we suggest two or three weeks. Even so, we often find a unit with 12 hours' notice — message us and we will confirm."]}
+  {es:["¿Con cuánta anticipación debo reservar?","Idealmente una semana; de diciembre a abril y en julio, cuando la demanda sube, mejor dos o tres semanas. La página acepta reservas hasta con 12 horas de aviso. Si su viaje sale en menos de 12 horas, antes de cobrarle le ofrecemos confirmar por WhatsApp que tenemos unidad: le respondemos en minutos y muchas veces sí podemos."],
+   en:["How far ahead should I book?","Ideally a week; from December to April and in July, when demand rises, two or three weeks is better. The site takes bookings with as little as 12 hours' notice. If your trip leaves in under 12 hours, before charging you we offer to confirm on WhatsApp that a vehicle is available: we reply within minutes, and we can often make it work."]}
 ];
 
 const MSG = {
-  es:{ ok:"Disponible", few:"Últimas unidades", no:"Fecha no disponible",
+  es:{ ok:"Disponible", few:"Últimas unidades", no:"Fecha no disponible", wa:"Temporada alta · solo por WhatsApp",
        route:"Ruta", veh:"Vehículo", tier:"Servicio", dur:"Duración estimada", dep:"Pago", neto:"Tarifa sin impuesto", iva:"IVA incluido",
        std:"Estándar", vip:"Tropical Experts VIP", hourLine:"Horas adicionales", subtotal:"Tarifa base", vipLine:"Recargo VIP",
        sent:"Listo. Se abrió WhatsApp con su solicitud completa. Si no se abrió, escríbanos directamente al número del sitio.",
        mailed:"Se abrió su gestor de correo con la solicitud lista para enviar.",
        noDate:"Esa fecha está bloqueada en nuestro calendario. Escoja otra o consúltenos por WhatsApp.",
        hi:"Hola, quiero reservar un traslado privado." },
-  en:{ ok:"Available", few:"Last units", no:"Date unavailable",
+  en:{ ok:"Available", few:"Last units", no:"Date unavailable", wa:"High season · WhatsApp only",
        route:"Route", veh:"Vehicle", tier:"Service", dur:"Estimated duration", dep:"Payment", neto:"Fare before tax", iva:"VAT included",
        std:"Standard", vip:"Tropical Experts VIP", hourLine:"Extra hours", subtotal:"Base fare", vipLine:"VIP supplement",
        sent:"Done. WhatsApp opened with your full request. If it did not open, message us directly at the number on the site.",
@@ -3200,14 +3241,25 @@ const MSG = {
   }
 
   /* ---------- disponibilidad ---------- */
+  /* ¿Esa fecha de viaje se reserva solo por WhatsApp (temporada alta ya activada)? */
+  function soloWhatsApp(dateStr){
+    const hoy = hoyISO();
+    return (CFG.soloWhatsApp || []).some(r => dateStr >= r.desde && dateStr <= r.hasta && hoy >= (r.activaDesde || "0000-00-00"));
+  }
+  function enTemporada(dateStr){
+    return (CFG.soloWhatsApp || []).some(r => dateStr >= r.desde && dateStr <= r.hasta);
+  }
+  function tramosTemporada(){
+    return CART.map((t, i) => ({ i: i, date: t.date })).filter(x => x.date && soloWhatsApp(x.date));
+  }
   function availability(dateStr){
     if(!dateStr) return null;
+    if(dateStr < hoyISO()) return "no";           // días anteriores a hoy (hora de Costa Rica)
     if(CFG.fechasBloqueadas.includes(dateStr)) return "no";
-    if(CFG.altaDemanda.includes(dateStr))      return "few";
+    if(soloWhatsApp(dateStr))                  return "wa";
+    if(enTemporada(dateStr) || CFG.altaDemanda.includes(dateStr)) return "few";
     const d = new Date(dateStr + "T12:00:00");
     if(isNaN(d)) return null;
-    const now = new Date();
-    if(d < new Date(now.getFullYear(), now.getMonth(), now.getDate())) return "no";
     // fines de semana con más presión de flota
     const wd = d.getDay();
     if(wd === 6 || wd === 0) return "few";
@@ -3215,7 +3267,7 @@ const MSG = {
   }
   function availPill(state){
     if(!state) return "";
-    const cls = state === "ok" ? "avail--ok" : state === "few" ? "avail--few" : "avail--no";
+    const cls = state === "ok" ? "avail--ok" : state === "few" ? "avail--few" : "avail--no";   // "wa" y "no" van en rojo
     return '<span class="avail '+cls+'">'+m(state)+"</span>";
   }
 
@@ -3832,8 +3884,35 @@ const MSG = {
     });
   }
 
+  /* ---------- reloj de Costa Rica ----------
+     La página la abren turistas desde cualquier país: "hoy" y "ahora" se calculan
+     siempre con la hora de Costa Rica (UTC-6, sin horario de verano), no con la del
+     navegador ni la de Londres. Si no, desde las 6 pm hora tica la página creía que
+     ya era mañana y no dejaba reservar para el día siguiente. */
+  function fechaHoraCR(){
+    const f = new Intl.DateTimeFormat("en-CA", { timeZone:"America/Costa_Rica", year:"numeric", month:"2-digit",
+                                                 day:"2-digit", hour:"2-digit", minute:"2-digit", hourCycle:"h23" });
+    const o = {}; f.formatToParts(new Date()).forEach(p => { o[p.type] = p.value; });
+    return { iso: o.year + "-" + o.month + "-" + o.day, min: (parseInt(o.hour,10) % 24) * 60 + parseInt(o.minute,10) };
+  }
+  /* Minutos que faltan para la recogida (fecha y hora del tramo, en hora de Costa Rica).
+     Negativo = ya pasó. null = faltan datos. */
+  function minutosHastaViaje(dateStr, timeStr){
+    if(!dateStr || !timeStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr) || !/^\d{2}:\d{2}/.test(timeStr)) return null;
+    const n = fechaHoraCR();
+    const a = Date.UTC(+dateStr.slice(0,4), +dateStr.slice(5,7) - 1, +dateStr.slice(8,10), +timeStr.slice(0,2), +timeStr.slice(3,5));
+    const b = Date.UTC(+n.iso.slice(0,4), +n.iso.slice(5,7) - 1, +n.iso.slice(8,10), Math.floor(n.min / 60), n.min % 60);
+    return Math.round((a - b) / 60000);
+  }
+  /* Tramos del carrito que salen en menos de CFG.minHorasAnticipacion horas. */
+  function tramosUrgentes(){
+    const lim = (CFG.minHorasAnticipacion || 12) * 60;
+    return CART.map((t, i) => ({ i: i, min: minutosHastaViaje(t.date, t.time) }))
+               .filter(x => x.min !== null && x.min >= 0 && x.min < lim);
+  }
+
   /* ---------- cotizador ---------- */
-  let lastRoute = null, HOY_ISO = new Date().toISOString().slice(0,10);
+  let lastRoute = null, HOY_ISO = fechaHoraCR().iso;
   /* Todo lo que escribe el cliente pasa por aquí antes de pintarse en la página. */
   const escHtml = v => String(v == null ? "" : v)
     .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
@@ -3981,15 +4060,21 @@ const MSG = {
       if(!t.drop.trim()) faltan.push(L ? "el destino exacto" : "the exact drop-off");
       if((esAeropuerto(t.from) || esAeropuerto(t.to)) && !t.flight.trim())
         faltan.push(L ? "el número de vuelo" : "the flight number");
+      /* La recogida no puede ser una hora que ya pasó (hora de Costa Rica). */
+      const mins = minutosHastaViaje(t.date, t.time);
+      const pasada = mins !== null && mins < 0;
       const el = document.querySelector('[data-err="'+i+'"]');
       if(el){
         el.textContent = faltan.length
           ? (L ? "Falta " + faltan.join(", ") + " en el tramo " + (i+1) + "."
                : "Missing " + faltan.join(", ") + " on trip " + (i+1) + ".")
+          : pasada
+          ? (L ? "La hora de recogida del tramo " + (i+1) + " ya pasó (hora de Costa Rica). Escoja otra hora o fecha."
+               : "The pick-up time on trip " + (i+1) + " has already passed (Costa Rica time). Choose another time or date.")
           : "";
-        el.classList.toggle("show", faltan.length > 0);
+        el.classList.toggle("show", faltan.length > 0 || pasada);
       }
-      if(faltan.length) ok = false;
+      if(faltan.length || pasada) ok = false;
       if(t.date && availability(t.date) === "no"){ ok = false; showOk(m("noDate"), true); }
     });
     return ok;
@@ -4038,10 +4123,21 @@ const MSG = {
       web: location.hostname || "sitio", fechaCreacion: new Date().toISOString()
     };
   }
-  function orderText(orden){
+  function orderText(orden, extra){
     const L = LANG === "es", o = orderPayload();
-    let t = (L ? "Hola, acabo de reservar en su página." : "Hi, I just booked on your website.") + "\n";
-    t += (L ? "Orden: " : "Order: ") + (orden || (L ? "(se asigna al confirmar)" : "(assigned on confirmation)")) + "\n\n";
+    let t;
+    if(extra && extra.temporada){
+      /* temporada alta: la reserva se hace por WhatsApp */
+      t = (L ? "Hola, quiero reservar un traslado en temporada alta (" + extra.temporada + "). ¿Tienen unidad disponible? Estos son los datos:"
+             : "Hello, I would like to book a transfer in high season (" + extra.temporada + "). Do you have a vehicle available? Here are the details:") + "\n\n";
+    } else if(extra && extra.min != null){
+      /* viaje de última hora: se pide confirmar disponibilidad antes de pagar */
+      t = (L ? "Hola, quiero reservar un traslado que sale en " + horasTexto(extra.min, L) + ". ¿Tienen unidad disponible? Estos son los datos:"
+             : "Hello, I would like to book a transfer leaving in " + horasTexto(extra.min, L) + ". Do you have a vehicle available? Here are the details:") + "\n\n";
+    } else {
+      t = (L ? "Hola, acabo de reservar en su página." : "Hi, I just booked on your website.") + "\n";
+      t += (L ? "Orden: " : "Order: ") + (orden || (L ? "(se asigna al confirmar)" : "(assigned on confirmation)")) + "\n\n";
+    }
     t += (L ? "Nombre: " : "Name: ") + o.nombre + "\n" + (L ? "Correo: " : "Email: ") + o.correo + "\n" +
          "WhatsApp: " + (o.whatsapp || "—") + "\n" +
          (L ? "Pasajeros: " : "Passengers: ") + o.adultos + (L?" adultos":" adults") +
@@ -4059,6 +4155,62 @@ const MSG = {
     t += "\n" + "Total: " + usd(o.total) + " USD" + (L ? " · pago 100 % por enlace seguro" : " · 100 % by secure link");
     return t;
   }
+  /* ---------- viaje de última hora ---------- */
+  let urgenteOk = false;                 // el cliente ya vio el aviso y decidió seguir en línea
+  function horasTexto(min, L){
+    if(min < 60) return L ? "menos de una hora" : "under an hour";
+    const h = Math.floor(min / 60);
+    if(h === 1) return L ? "poco más de una hora" : "just over an hour";
+    return L ? "unas " + h + " horas" : "about " + h + " hours";
+  }
+  /* Fecha en palabras: "15 de diciembre" / "December 15" */
+  function fechaLarga(iso, L){
+    const d = new Date(iso + "T12:00:00");
+    return d.toLocaleDateString(L ? "es-CR" : "en-US", { day:"numeric", month:"long" });
+  }
+  function rangoTemporada(L){
+    const t = tramosTemporada(); if(!t.length) return "";
+    const r = (CFG.soloWhatsApp || []).find(x => t[0].date >= x.desde && t[0].date <= x.hasta) || {};
+    return L ? "del " + fechaLarga(r.desde, L) + " al " + fechaLarga(r.hasta, L)
+             : fechaLarga(r.desde, L) + " to " + fechaLarga(r.hasta, L);
+  }
+  /* modo "temporada": fechas que solo se reservan por WhatsApp (no hay salida en línea)
+     modo "urgente":   viaje en menos de N horas (se puede continuar en línea) */
+  function abrirUrgente(modo){
+    const L = LANG === "es";
+    const T = $("#urgT"), P = $("#urgP"), W = $("#urgWa"), G = $("#urgGo"), N = $("#urgNote"), tag = $("#urgTag");
+    if(modo === "temporada"){
+      const rango = rangoTemporada(L);
+      tag.textContent = "🎄";
+      T.textContent = L ? "Temporada alta: " + rango : "High season: " + rango;
+      P.innerHTML = L
+        ? "En esas fechas la demanda es altísima y asignamos las unidades una por una, así que <b>no tomamos la reserva en línea</b>. Escríbanos por WhatsApp con un clic —el mensaje ya lleva todos los datos de su viaje— y le confirmamos disponibilidad y le enviamos el enlace de pago."
+        : "Demand on those dates is very high and we assign each vehicle one by one, so <b>we don't take online bookings for them</b>. Message us on WhatsApp with one tap — the message already includes every detail of your trip — and we confirm availability and send you the payment link.";
+      W.textContent = L ? "Reservar por WhatsApp" : "Book on WhatsApp";
+      W.href = waLink(orderText(null, { temporada: rango }));
+      G.hidden = true;
+      N.textContent = L ? "Viajes " + rango + ": únicamente por WhatsApp." : "Trips " + rango + ": WhatsApp only.";
+    } else {
+      const u = tramosUrgentes(); if(!u.length) return;
+      const min = Math.min.apply(null, u.map(x => x.min)), lim = CFG.minHorasAnticipacion || 12;
+      tag.textContent = "⏱";
+      T.textContent = L ? "Su viaje sale en " + horasTexto(min, L) : "Your trip leaves in " + horasTexto(min, L);
+      P.innerHTML = L
+        ? "Muchas veces podemos atenderlo, pero para garantizarle un chofer y una unidad lista a tiempo preferimos <b>confirmar la disponibilidad antes de cobrarle</b>. Escríbanos por WhatsApp con un clic: el mensaje ya lleva todos los datos de su viaje y le respondemos en minutos."
+        : "We can often make it work, but to guarantee a driver and a vehicle ready on time we prefer to <b>confirm availability before charging you</b>. Message us on WhatsApp with one tap: the message already includes every detail of your trip and we reply within minutes.";
+      W.textContent = L ? "Confirmar por WhatsApp" : "Confirm on WhatsApp";
+      W.href = waLink(orderText(null, { min: min }));
+      G.hidden = false;
+      G.textContent = L ? "Prefiero continuar con la reserva en línea" : "I prefer to continue booking online";
+      N.textContent = L ? "Recomendamos reservar con al menos " + lim + " horas de anticipación."
+                        : "We recommend booking at least " + lim + " hours ahead.";
+    }
+    $("#urgScrim").classList.add("on"); $("#urgBox").classList.add("on");
+    W.focus();
+  }
+  function cerrarUrgente(){
+    $("#urgScrim").classList.remove("on"); $("#urgBox").classList.remove("on");
+  }
   let bkAbierta = 0;                     // momento en que se abrió la ventana
   async function submitOrder(){
     /* Protección contra robots: campo trampa invisible y tiempo mínimo humano.
@@ -4067,6 +4219,11 @@ const MSG = {
     if(trampa && trampa.value.trim()) return;
     if(bkAbierta && Date.now() - bkAbierta < 2500) return;
     if(!validateBook()) return;
+    /* Viaje de última hora (menos de CFG.minHorasAnticipacion horas): no se bloquea,
+       pero antes de cobrar se le ofrece confirmar disponibilidad por WhatsApp. */
+    if(tramosTemporada().length){ abrirUrgente("temporada"); return; }   // temporada alta: solo WhatsApp
+    if(!urgenteOk && tramosUrgentes().length){ abrirUrgente("urgente"); return; }
+    urgenteOk = false;
     const L = LANG === "es", btn = $("#bSend"), tarjeta = pagoConTarjeta();
     btn.disabled = true;
     showOk(L ? (tarjeta ? "Creando su orden y preparando el pago seguro…" : "Generando su orden…")
@@ -4147,14 +4304,14 @@ const MSG = {
     syncSeats();
     ORDEN_LISTA = true;
     /* solo queda visible la caja con el número de orden */
-    ["#bTrips","#bEmpty",".b-sec",".b-total",".b-total-sub","#bookForm .q-cta","#bookForm .hint"]
+    ["#bTrips","#bEmpty",".b-sec",".b-total",".b-total-sub","#bookForm .q-cta",".b-antic","#bookForm .hint:not(.b-antic)"]
       .forEach(sel => { const el = $(sel); if(el) el.hidden = true; });
   }
   let ORDEN_LISTA = false;
   function restaurarReserva_(){
     if(!ORDEN_LISTA) return;
     ORDEN_LISTA = false;
-    ["#bTrips",".b-sec",".b-total",".b-total-sub","#bookForm .q-cta","#bookForm .hint"]
+    ["#bTrips",".b-sec",".b-total",".b-total-sub","#bookForm .q-cta",".b-antic","#bookForm .hint:not(.b-antic)"]
       .forEach(sel => { const el = $(sel); if(el) el.hidden = false; });
     const ob = $("#orderBox"); if(ob){ ob.hidden = true; ob.innerHTML = ""; }
     $("#bookOk").classList.remove("show");
@@ -4201,9 +4358,10 @@ const MSG = {
 
   /* ---------- arranque ---------- */
   function init(){
-    const today = new Date(); today.setDate(today.getDate() + 2);
-    const iso = today.toISOString().slice(0,10);
-    HOY_ISO = new Date().toISOString().slice(0,10);
+    HOY_ISO = fechaHoraCR().iso;
+    /* se refresca cada minuto: si el cliente deja la página abierta de un día para otro,
+       "hoy" sigue siendo el de Costa Rica */
+    setInterval(() => { HOY_ISO = fechaHoraCR().iso; }, 60000);
     $("#yr").textContent = new Date().getFullYear();
 
     /* IDIOMA DE ENTRADA — la página abre en inglés porque casi todos los
@@ -4312,6 +4470,13 @@ const MSG = {
     }
     let instalador = null;
     const appBtn = $("#appBtn");
+    /* aviso de viaje de última hora */
+    $("#urgX").addEventListener("click", cerrarUrgente);
+    $("#urgScrim").addEventListener("click", cerrarUrgente);
+    $("#urgWa").addEventListener("click", () => { setTimeout(cerrarUrgente, 300); });
+    $("#urgGo").addEventListener("click", () => { urgenteOk = true; cerrarUrgente(); submitOrder(); });
+    document.addEventListener("keydown", e => { if(e.key === "Escape" && $("#urgBox").classList.contains("on")) cerrarUrgente(); });
+
     const appScrim = $("#appScrim"), appHow = $("#appHow"), appSteps = $("#appHowSteps");
 
     const yaInstalada = () =>
