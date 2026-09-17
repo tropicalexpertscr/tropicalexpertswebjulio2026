@@ -14,6 +14,8 @@
 <link rel="icon" href="img/logo-te.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0B0A09">
+<link rel="preload" as="image" href="img/portada-buseta-sm.webp" media="(max-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/portada-buseta.webp" media="(min-width:701px)" fetchpriority="high">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -1120,11 +1122,27 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
 .how-i{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r);background:var(--brass-dim);border:1px solid var(--brass-line);color:var(--brass-hi);margin-bottom:16px}
 .how-c h3{font-size:1.18rem;color:var(--bone);margin-bottom:8px}
 .how-c p{margin:0;font-size:.92rem;color:var(--muted);line-height:1.6}
+
+/* ---- Cómo instalar la app ---- */
+#appScrim{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(2px);z-index:120;display:none}
+#appScrim.on{display:block}
+#appHow{position:fixed;z-index:121;left:50%;top:50%;transform:translate(-50%,-50%);width:min(430px,calc(100vw - 32px));
+  max-height:calc(100vh - 40px);overflow:auto;background:var(--ink-2,#141210);border:1px solid var(--brass);
+  border-radius:16px;padding:22px 20px 18px;display:none;box-shadow:0 18px 60px rgba(0,0,0,.6)}
+#appHow.on{display:block}
+#appHow h3{font-family:var(--f-display);font-size:1.3rem;margin:0 0 4px;color:var(--brass-hi,#e7c98b)}
+#appHow .ah-sub{color:var(--muted,#a9a29b);font-size:.9rem;margin:0 0 16px;line-height:1.45}
+#appHow ol{margin:0;padding-left:1.25em;color:#efeae4;font-size:.98rem;line-height:1.75}
+#appHow ol b{color:var(--brass-hi,#e7c98b)}
+#appHow .ah-x{position:absolute;top:10px;right:12px;background:none;border:0;color:var(--muted,#a9a29b);
+  font-size:1.5rem;line-height:1;cursor:pointer;padding:4px 8px}
+#appHow .ah-x:hover{color:#fff}
+#appHow .ah-ok{margin-top:18px;width:100%}
 </style>
 <header class="hdr">
   <div class="wrap hdr-in">
     <a href="#inicio" class="brand" translate="no">
-      <img src="img/logo-te.png" alt="Tropical Experts Costa Rica" width="160" height="177">
+      <img src="img/logo-te.png" alt="Tropical Experts Costa Rica" width="160" height="177" decoding="async">
       <span class="brand-t"><b translate="no">Tropical Experts</b><span>Costa Rica</span></span>
     </a>
     <nav class="nav" id="nav">
@@ -1179,7 +1197,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
   <div class="hero-bg">
     <picture>
       <source media="(max-width:700px)" srcset="img/portada-buseta-sm.webp">
-      <img src="img/portada-buseta.webp" alt="Buseta de Tropical Experts Costa Rica con pasajeros al atardecer" width="1800" height="1013" fetchpriority="high">
+      <img src="img/portada-buseta.webp" alt="Buseta de Tropical Experts Costa Rica con pasajeros al atardecer" width="1800" height="1013" fetchpriority="high" decoding="async">
     </picture>
   </div>
   <div class="wrap hero-in">
@@ -1321,7 +1339,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
       </div>
       <div>
       <figure class="about-img">
-        <img src="img/acerca-familia.webp" alt="Johnson Paniagua, Andrea Segura y sus dos hijas, la familia fundadora de Tropical Experts Costa Rica" width="768" height="576" loading="lazy">
+        <img src="img/acerca-familia.webp" alt="Johnson Paniagua, Andrea Segura y sus dos hijas, la familia fundadora de Tropical Experts Costa Rica" width="768" height="576" loading="lazy" decoding="async">
         <figcaption data-i18n="ab.cap" data-es="La familia detrás de la empresa: Johnson, Andrea y sus dos hijas. Esto es lo que significa «empresa familiar».">The family behind the company: Johnson, Andrea and their two daughters. This is what «family business» means.</figcaption>
       </figure>
       <dl class="creds">
@@ -1344,12 +1362,12 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
         <p class="cli-sub" data-i18n="cli.sub" data-es="Algunos de los viajes que hemos compartido por Costa Rica.">Some of the journeys we have shared across Costa Rica.</p>
       </div>
       <div class="cli-grid">
-        <figure><img src="img/cli-jardines.webp" alt="Familia de pasajeros con Johnson en un jardín de flores, durante una parada del traslado" width="840" height="560" loading="lazy"></figure>
-        <figure><img src="img/cli-arenal.webp" alt="Grupo de pasajeros en un mirador con vista al lago y las montañas" width="840" height="560" loading="lazy"></figure>
-        <figure><img src="img/cli-buseta.webp" alt="Familia junto a la buseta de Tropical Experts al llegar a su hotel de noche" width="840" height="560" loading="lazy"></figure>
-        <figure><img src="img/cli-llegada.webp" alt="Pasajeros con su equipaje a la llegada al hotel" width="840" height="560" loading="lazy"></figure>
-        <figure><img src="img/cli-catarata.webp" alt="Pasajera y su chofer frente a una catarata, en una parada del recorrido" width="840" height="560" loading="lazy"></figure>
-        <figure><img src="img/cli-familia.webp" alt="Familia de varias generaciones con su chofer al terminar el traslado" width="840" height="560" loading="lazy"></figure>
+        <figure><img src="img/cli-jardines.webp" alt="Familia de pasajeros con Johnson en un jardín de flores, durante una parada del traslado" width="840" height="560" loading="lazy" decoding="async"></figure>
+        <figure><img src="img/cli-arenal.webp" alt="Grupo de pasajeros en un mirador con vista al lago y las montañas" width="840" height="560" loading="lazy" decoding="async"></figure>
+        <figure><img src="img/cli-buseta.webp" alt="Familia junto a la buseta de Tropical Experts al llegar a su hotel de noche" width="840" height="560" loading="lazy" decoding="async"></figure>
+        <figure><img src="img/cli-llegada.webp" alt="Pasajeros con su equipaje a la llegada al hotel" width="840" height="560" loading="lazy" decoding="async"></figure>
+        <figure><img src="img/cli-catarata.webp" alt="Pasajera y su chofer frente a una catarata, en una parada del recorrido" width="840" height="560" loading="lazy" decoding="async"></figure>
+        <figure><img src="img/cli-familia.webp" alt="Familia de varias generaciones con su chofer al terminar el traslado" width="840" height="560" loading="lazy" decoding="async"></figure>
       </div>
     </div>
   </div>
@@ -1425,7 +1443,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
     <div class="fleet">
       <article class="veh">
         <div class="veh-img" data-tag="1–5 PAX">
-          <img src="img/veh-staria.webp" alt="Hyundai Staria, minivan de hasta 5 pasajeros" width="1000" height="600" loading="lazy">
+          <img src="img/veh-staria.webp" alt="Hyundai Staria, minivan de hasta 5 pasajeros" width="1000" height="600" loading="lazy" decoding="async">
         </div>
         <div class="veh-body">
           <h3>Hyundai Staria</h3>
@@ -1440,7 +1458,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
       </article>
       <article class="veh">
         <div class="veh-img" data-tag="6–9 PAX">
-          <img src="img/veh-hiace.webp" alt="Toyota Hiace de techo alto, de 6 a 9 pasajeros" width="1000" height="600" loading="lazy">
+          <img src="img/veh-hiace.webp" alt="Toyota Hiace de techo alto, de 6 a 9 pasajeros" width="1000" height="600" loading="lazy" decoding="async">
         </div>
         <div class="veh-body">
           <h3>Toyota Hiace</h3>
@@ -1455,7 +1473,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
       </article>
       <article class="veh">
         <div class="veh-img" data-tag="10–12 PAX">
-          <img src="img/veh-maxus.webp" alt="Maxus V90, buseta ejecutiva de 10 a 12 pasajeros" width="1000" height="600" loading="lazy">
+          <img src="img/veh-maxus.webp" alt="Maxus V90, buseta ejecutiva de 10 a 12 pasajeros" width="1000" height="600" loading="lazy" decoding="async">
         </div>
         <div class="veh-body">
           <h3>Maxus V90</h3>
@@ -1741,7 +1759,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
   <div class="wrap">
     <div class="ftr-grid">
       <div>
-        <img class="ftr-logo" src="img/logo.webp" alt="Tropical Experts Costa Rica" width="900" height="600" loading="lazy">
+        <img class="ftr-logo" src="img/logo.webp" alt="Tropical Experts Costa Rica" width="900" height="600" loading="lazy" decoding="async">
         <p style="font-size:.9rem;color:var(--muted);max-width:34ch" data-i18n="ft.blurb" data-es="Transporte privado puerta a puerta en todo Costa Rica. Tarifa cerrada con impuestos incluidos, conductores profesionales y unidades con seguro completo. Licencia I.C.T. #3946-2025.">Door-to-door private transport across Costa Rica. Flat rates with taxes included, professional drivers and fully insured vehicles. I.C.T. licence #3946-2025.</p>
       </div>
       <div>
@@ -1776,7 +1794,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
           <li data-i18n="ft.loc" data-es="La Fortuna, San Carlos">La Fortuna, San Carlos</li>
           <li data-i18n="ft.hours" data-es="Atención 24/7">Open 24/7</li>
         </ul>
-        <button type="button" class="btn btn--ghost btn--sm app-btn" id="appBtn" hidden>
+        <button type="button" class="btn btn--ghost btn--sm app-btn" id="appBtn">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 1.6v8.4M4.6 7.2 8 10.6l3.4-3.4M2.4 12.2v1.1a1.1 1.1 0 0 0 1.1 1.1h9a1.1 1.1 0 0 0 1.1-1.1v-1.1"/></svg>
           <span data-i18n="ft.install" data-es="Instalar la app">Install the app</span>
         </button>
@@ -1914,6 +1932,15 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-1.2 1.3-1.1 3 .3 4.9 1.3 1.9 3 3.5 5.5 4.4 1.6.6 2.6.6 3.4.4.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.3-8 8.3z"/></svg>
 </a>
 </div><!-- /.page-scroll -->
+<div id="appScrim"></div>
+<div id="appHow" role="dialog" aria-modal="true" aria-labelledby="appHowT">
+  <button type="button" class="ah-x" id="appHowX" aria-label="Cerrar">&times;</button>
+  <h3 id="appHowT" data-i18n="app.t" data-es="Instalar la app">Install the app</h3>
+  <p class="ah-sub" data-i18n="app.sub" data-es="Queda como un icono en su pantalla de inicio y abre a pantalla completa, sin barra del navegador.">It sits as an icon on your home screen and opens full screen, with no browser bar.</p>
+  <ol id="appHowSteps"></ol>
+  <button type="button" class="btn btn--gold ah-ok" id="appHowOk" data-i18n="app.ok" data-es="Entendido">Got it</button>
+</div>
+
 
 <script>
 /* ==========================================================================
@@ -2002,7 +2029,7 @@ const CFG = {
     prefijo:"TECR",
     // Pegue aquí la URL que termina en /exec de su Apps Script (ver GUIA-ORDENES.md).
     // Mientras esté vacía, la reserva sale por WhatsApp y el número se asigna al confirmar.
-    endpoint:"",
+    endpoint:"https://script.google.com/macros/s/AKfycbxNqmZ5IN361vxf5wME_TbllIVz5KOo45j8c_sgfCqlVUfItronZddWQD41JSU5lJRP/exec",
     // Clave compartida con el Apps Script: evita que un extraño mande órdenes falsas.
     // Debe ser IGUAL a la CLAVE que está en Codigo.gs. Cámbiela cuando quiera, en los dos lados.
     clave:"tecr-2026-cr"
@@ -3047,7 +3074,7 @@ const I18N = {
   "bk.s3t":"You get your PDF voucher","bk.s3d":"By email, with every booking detail. The day before: driver's name, plate number and 24/7 contact.",
   "bk.s4t":"We meet you at arrivals","bk.s4d":"We track your flight: if it is delayed, we adjust at no charge.",
   "bk.pay1":"Visa · Mastercard · Amex","bk.pay2":"Secure payment by Tilopay","bk.pay3":"Free cancellation up to 48 h before",
-  "ft.terms":"Terms & privacy","g.see":"See reviews","ft.install":"Install the app","bk.country":"Card country","bk.zip":"Card billing ZIP / postal code","bk.errZip":"We need the card's postal code for the payment.",
+  "ft.terms":"Terms & privacy","g.see":"See reviews","ft.install":"Install the app","app.t":"Install the app","app.sub":"It sits as an icon on your home screen and opens full screen, with no browser bar.","app.ok":"Got it","bk.country":"Card country","bk.zip":"Card billing ZIP / postal code","bk.errZip":"We need the card's postal code for the payment.",
   "bk.terms1":"I have read and accept the ","bk.terms2":"Terms and Conditions","bk.terms3":" — free cancellation up to 48 h before pick-up.",
   "bk.errTerms":"Please tick the terms box to continue.","bk.sendCard":"Book and pay by card",
   "bk.name":"Full name","bk.email":"Email","bk.phone":"WhatsApp","bk.route":"Route","bk.date":"Date",
@@ -4285,21 +4312,93 @@ const MSG = {
     }
     let instalador = null;
     const appBtn = $("#appBtn");
+    const appScrim = $("#appScrim"), appHow = $("#appHow"), appSteps = $("#appHowSteps");
+
+    const yaInstalada = () =>
+      (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ||
+      window.navigator.standalone === true;
+
+    const PASOS = {
+      ios: {
+        es: ["Toque el botón <b>Compartir</b> (el cuadrito con la flecha hacia arriba) en la barra de abajo.",
+             "Deslice la lista y escoja <b>Agregar a inicio</b>.",
+             "Toque <b>Agregar</b> arriba a la derecha."],
+        en: ["Tap the <b>Share</b> button (the square with an arrow pointing up) in the bottom bar.",
+             "Scroll the list and choose <b>Add to Home Screen</b>.",
+             "Tap <b>Add</b> at the top right."]
+      },
+      android: {
+        es: ["Toque los <b>tres puntos</b> arriba a la derecha del navegador.",
+             "Escoja <b>Instalar aplicación</b> (o <b>Agregar a pantalla de inicio</b>).",
+             "Confirme con <b>Instalar</b>."],
+        en: ["Tap the <b>three dots</b> at the top right of the browser.",
+             "Choose <b>Install app</b> (or <b>Add to Home screen</b>).",
+             "Confirm with <b>Install</b>."]
+      },
+      pc: {
+        es: ["En la barra de direcciones busque el icono de <b>instalar</b> (una pantalla con una flecha).",
+             "Si no lo ve, abra el <b>menú</b> del navegador y escoja <b>Instalar Tropical Experts</b>.",
+             "Confirme con <b>Instalar</b>."],
+        en: ["In the address bar look for the <b>install</b> icon (a screen with an arrow).",
+             "If you do not see it, open the browser <b>menu</b> and choose <b>Install Tropical Experts</b>.",
+             "Confirm with <b>Install</b>."]
+      }
+    };
+
+    function queDispositivo(){
+      const ua = navigator.userAgent || "";
+      if(/iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+      if(/Android/.test(ua)) return "android";
+      return "pc";
+    }
+
+    function cerrarComo(){
+      if(appHow) appHow.classList.remove("on");
+      if(appScrim) appScrim.classList.remove("on");
+    }
+
+    function abrirComo(){
+      if(!appHow || !appSteps) return;
+      const lista = PASOS[queDispositivo()][LANG === "es" ? "es" : "en"];
+      appSteps.innerHTML = "";
+      lista.forEach(paso => {
+        const li = document.createElement("li");
+        li.innerHTML = paso;
+        appSteps.appendChild(li);
+      });
+      appScrim.classList.add("on");
+      appHow.classList.add("on");
+    }
+
     window.addEventListener("beforeinstallprompt", e => {
       e.preventDefault();
       instalador = e;
-      if(appBtn) appBtn.hidden = false;
     });
+
     if(appBtn){
+      if(yaInstalada()) appBtn.hidden = true;
       appBtn.addEventListener("click", async () => {
-        if(!instalador) return;
-        instalador.prompt();
-        await instalador.userChoice;
-        instalador = null;
-        appBtn.hidden = true;
+        if(instalador){
+          instalador.prompt();
+          await instalador.userChoice;
+          instalador = null;
+          return;
+        }
+        abrirComo();
       });
     }
-    window.addEventListener("appinstalled", () => { if(appBtn) appBtn.hidden = true; });
+
+    if(appScrim) appScrim.addEventListener("click", cerrarComo);
+    const appX = $("#appHowX"), appOk = $("#appHowOk");
+    if(appX) appX.addEventListener("click", cerrarComo);
+    if(appOk) appOk.addEventListener("click", cerrarComo);
+    document.addEventListener("keydown", e => { if(e.key === "Escape") cerrarComo(); });
+
+    window.addEventListener("appinstalled", () => {
+      instalador = null;
+      cerrarComo();
+      if(appBtn) appBtn.hidden = true;
+    });
 
     const wa = waLink(MSG[LANG].hi);
     $("#waFloat").href = wa;

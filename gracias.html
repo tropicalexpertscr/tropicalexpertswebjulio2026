@@ -96,7 +96,7 @@ dt{color:var(--muted)}dd{margin:0}
   <p class="foot" data-t="foot"></p>
 </main>
 <script>
-const ENDPOINT = "", CLAVE = "tecr-2026-cr", WA = "50684867057";
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbxNqmZ5IN361vxf5wME_TbllIVz5KOo45j8c_sgfCqlVUfItronZddWQD41JSU5lJRP/exec", CLAVE = "tecr-2026-cr", WA = "50684867057";
 const Q = new URLSearchParams(location.search);
 const code = Q.get("code") || "", orden = (Q.get("order") || "").slice(0,20), auth = Q.get("auth") || "",
       tx = Q.get("tilopay-transaction") || Q.get("tpt") || "", desc = Q.get("description") || "";
