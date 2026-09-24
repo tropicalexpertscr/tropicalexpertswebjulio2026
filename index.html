@@ -23,13 +23,14 @@
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600&display=swap" media="print" onload="this.media='all';this.onload=null">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600&display=swap">
 </head>
 <body>
 <title translate="no">Tropical Experts Costa Rica</title>
 
 
-
+<noscript></noscript>
 
 <style>
 /* ============================================================
@@ -4077,7 +4078,22 @@ const MSG = {
       if(faltan.length || pasada) ok = false;
       if(t.date && availability(t.date) === "no"){ ok = false; showOk(m("noDate"), true); }
     });
+    /* Sin esto, los errores se pintaban cientos de píxeles arriba de donde el cliente
+       está mirando y el botón parecía muerto: pulsaba y en pantalla no cambiaba nada. */
+    if(!ok) irAlPrimerError();
     return ok;
+  }
+  function irAlPrimerError(){
+    const L = LANG === "es";
+    const primero = document.querySelector("#bookForm .err.show, #bookForm .b-err.show") ||
+                    $$("#bookForm .show").find(el => el.offsetParent !== null);
+    if(primero){
+      primero.scrollIntoView({ behavior:"smooth", block:"center" });
+      const campo = primero.closest(".field, .b-trip");
+      const foco = campo && campo.querySelector("input,select,textarea");
+      if(foco) setTimeout(() => { try{ foco.focus({preventScroll:true}); }catch(e){} }, 400);
+    }
+    showOk(L ? "Revise los datos marcados en rojo más arriba." : "Please check the fields marked in red above.", true);
   }
 
   /* ---------- órdenes TECR ---------- */
@@ -4217,7 +4233,11 @@ const MSG = {
        No se le avisa al robot que fue detectado: simplemente no pasa nada. */
     const trampa = $("#bWeb");
     if(trampa && trampa.value.trim()) return;
-    if(bkAbierta && Date.now() - bkAbierta < 2500) return;
+    /* Antes esto hacía "return" en silencio y el botón parecía muerto. Ahora avisa. */
+    if(bkAbierta && Date.now() - bkAbierta < 2500){
+      showOk(LANG === "es" ? "Un momento, por favor…" : "One moment, please…", false);
+      return;
+    }
     if(!validateBook()) return;
     /* Viaje de última hora (menos de CFG.minHorasAnticipacion horas): no se bloquea,
        pero antes de cobrar se le ofrece confirmar disponibilidad por WhatsApp. */
@@ -4228,25 +4248,58 @@ const MSG = {
     btn.disabled = true;
     showOk(L ? (tarjeta ? "Creando su orden y preparando el pago seguro…" : "Generando su orden…")
              : (tarjeta ? "Creating your order and preparing the secure payment…" : "Creating your order…"), false);
-    let orden = null, pagoUrl = "";
+    let orden = null, pagoUrl = "", fallo = null;
     if(CFG.ordenes && CFG.ordenes.endpoint){
+      /* Límite de espera: sin esto, una red que acepta la conexión y no contesta
+         (wifi de hotel o aeropuerto) dejaba el botón en "Generando su orden…" para siempre. */
+      const corte = new AbortController();
+      const reloj = setTimeout(() => corte.abort(), 15000);
       try{
-        const res = await fetch(CFG.ordenes.endpoint, { method:"POST", body: JSON.stringify(orderPayload()) });
+        const res = await fetch(CFG.ordenes.endpoint, { method:"POST", body: JSON.stringify(orderPayload()), signal: corte.signal });
         const j = await res.json();
         if(j && j.ok && j.orden){ orden = j.orden; pagoUrl = j.pagoUrl || ""; }
-      }catch(e){ /* sin conexión con el servicio: se sigue por WhatsApp */ }
+        /* El servicio manda mensajes útiles ("demasiadas solicitudes", "esas fechas son solo
+           por WhatsApp", "debe aceptar los términos"). Antes se tiraban a la basura y el
+           cliente veía "reserva enviada". Ahora se le muestran tal cual. */
+        else fallo = (j && j.error) ? String(j.error) : "sin respuesta";
+      }catch(e){
+        fallo = (e && e.name === "AbortError") ? "tiempo agotado" : "sin conexión";
+      }finally{ clearTimeout(reloj); }
     }
     btn.disabled = false;
-    /* Pago con tarjeta: la orden ya existe; el cliente pasa a la página segura de
-       Tilopay. Antes de irse, se borra todo lo suyo de este navegador. */
+    /* Pago con tarjeta: la orden ya existe; el cliente pasa a la página segura de Tilopay.
+       El carrito NO se borra aquí: se borra en gracias.html cuando el pago quede aprobado.
+       Si se borrara ahora, el cliente que pulse "atrás" perdería todo lo que escribió. */
     if(tarjeta && orden && pagoUrl){
       showPago(orden, pagoUrl);
-      limpiarReserva_();
       setTimeout(() => { location.href = pagoUrl; }, 900);
       return;
     }
+    /* Si el servicio falló NO se borra nada y no se dice que se envió: se le ofrece
+       WhatsApp como botón que el cliente pulsa él mismo (así ningún navegador lo bloquea). */
+    if(fallo !== null){ mostrarFallo(fallo); return; }
     window.open(waLink(orderText(orden)), "_blank", "noopener");
-    showOrder(orden);
+    showOrder(orden);   // showOrder ya borra los datos de este navegador
+  }
+  /* Nada se perdió: el carrito y los datos siguen ahí para reintentar. */
+  function mostrarFallo(motivo){
+    const L = LANG === "es", box = $("#orderBox");
+    $("#bookOk").classList.remove("show");
+    const propio = /^(sin conexión|tiempo agotado|sin respuesta)$/.test(motivo);
+    const titulo = propio
+      ? (L ? "No pudimos crear su orden" : "We could not create your order")
+      : (L ? "No se pudo reservar" : "Booking could not be completed");
+    const texto = propio
+      ? (L ? "Parece que la conexión falló. Sus datos siguen aquí, no se ha perdido nada: puede intentar de nuevo, o mandarnos la reserva por WhatsApp con un toque."
+           : "The connection seems to have failed. Your details are still here, nothing was lost: you can try again, or send us your booking on WhatsApp with one tap.")
+      : escHtml(motivo);
+    box.hidden = false;
+    box.innerHTML = '<span class="ord-lbl" style="color:#E0705E">' + (L ? "Atención" : "Heads up") + '</span>' +
+      '<b class="ord-num" style="font-size:1.15rem;color:#E0705E">' + titulo + '</b>' +
+      '<p>' + texto + '</p>' +
+      '<a class="btn btn--solid" id="failWa" href="' + escHtml(waLink(orderText(null))) + '" target="_blank" rel="noopener">' +
+      (L ? "Enviar por WhatsApp" : "Send on WhatsApp") + '</a>';
+    box.scrollIntoView({ behavior:"smooth", block:"center" });
   }
   /* ¿Se paga con tarjeta en línea? Solo si está activado y hay servicio de órdenes. */
   function pagoConTarjeta(){
