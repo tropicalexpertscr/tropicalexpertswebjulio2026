@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+
+Sitemap: https://tropicalexpertswebjulio2026.vercel.app/sitemap.xml
