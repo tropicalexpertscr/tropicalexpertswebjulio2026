@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJCZFSYP1F"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZJCZFSYP1F');
+/* Clics a WhatsApp, telefono y correo en cualquier pagina */
+document.addEventListener('click',function(e){try{var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';
+if(/wa\.me|whatsapp/i.test(h)||a.getAttribute('data-contact')==='wa')gtag('event','whatsapp_click',{link_url:h.slice(0,100)});
+else if(/^tel:/i.test(h))gtag('event','phone_click',{link_url:h});
+else if(/^mailto:/i.test(h))gtag('event','email_click');}catch(x){}},true);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
 <meta name="robots" content="noindex,nofollow">
@@ -166,6 +176,16 @@ async function llamar(params){
     /* Solo ahora, con el pago confirmado, se borra lo que quedaba en el navegador.
        Antes se borraba antes de ir a pagar, y el cliente que pulsaba "atrás" perdía todo. */
     if(pagada){ try{ localStorage.removeItem("te_cart"); }catch(e){} }
+    if(pagada && orden){ try{
+      const k = "te_ga_comprada_" + orden;
+      let ya = false; try{ ya = !!localStorage.getItem(k); }catch(e){}
+      if(!ya){
+        let v = 0; try{ const d = JSON.parse(localStorage.getItem("te_ga_orden")||"{}"); if(d.o === orden) v = Number(d.v)||0; }catch(e){}
+        const ev = {transaction_id:String(orden), currency:"USD"}; if(v) ev.value = v;
+        gtag("event","purchase", ev);
+        try{ localStorage.setItem(k, "1"); }catch(e){}
+      }
+    }catch(e){} }
   } else {
     h1.setAttribute("data-t","h_bad"); h1.textContent = T[LANG].h_bad;
     document.getElementById("badOrden").textContent = orden;

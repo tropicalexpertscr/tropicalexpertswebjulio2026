@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJCZFSYP1F"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZJCZFSYP1F');
+/* Clics a WhatsApp, telefono y correo en cualquier pagina */
+document.addEventListener('click',function(e){try{var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';
+if(/wa\.me|whatsapp/i.test(h)||a.getAttribute('data-contact')==='wa')gtag('event','whatsapp_click',{link_url:h.slice(0,100)});
+else if(/^tel:/i.test(h))gtag('event','phone_click',{link_url:h});
+else if(/^mailto:/i.test(h))gtag('event','email_click');}catch(x){}},true);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
 <meta name="description" content="Private door-to-door transfers across Costa Rica. One closed price per vehicle — taxes, tolls, insurance, child seats and WiFi included. SJO and Liberia airport pickups with flight tracking. 5.0 on Google. I.C.T. licensed operator.">
@@ -3797,6 +3807,7 @@ const MSG = {
     CART.push({ from:r.from, to:r.to, rid:r.id, veh:vehKey, tier:PREF_TIER, horas:0,
                 date:"", time:"", pick:"", drop:"", flight:"", usd:0 });
     recalcCart(); saveCart(); renderCart(); openCart();
+    try{ const it = CART[CART.length-1]; gtag('event','add_to_cart',{currency:'USD', value:Number(it.usd)||0, items:[{item_id:String(r.id||''), item_name:(r.from+' - '+r.to), item_variant:vehKey, price:Number(it.usd)||0, quantity:1}]}); }catch(e){}
   }
   function removeTrip(i){ CART.splice(i,1); saveCart(); renderCart(); renderBTrips(); }
 
@@ -4285,6 +4296,11 @@ const MSG = {
        El carrito NO se borra aquí: se borra en gracias.html cuando el pago quede aprobado.
        Si se borrara ahora, el cliente que pulse "atrás" perdería todo lo que escribió. */
     if(tarjeta && orden && pagoUrl){
+      try{
+        const tot = Number(orderPayload().total) || 0;
+        try{ localStorage.setItem("te_ga_orden", JSON.stringify({o:orden, v:tot})); }catch(e){}
+        gtag('event','begin_checkout',{currency:'USD', value:tot, transaction_id:String(orden)});
+      }catch(e){}
       showPago(orden, pagoUrl);
       setTimeout(() => { location.href = pagoUrl; }, 900);
       return;
@@ -4292,6 +4308,7 @@ const MSG = {
     /* Si el servicio falló NO se borra nada y no se dice que se envió: se le ofrece
        WhatsApp como botón que el cliente pulsa él mismo (así ningún navegador lo bloquea). */
     if(fallo !== null){ mostrarFallo(fallo); return; }
+    try{ gtag('event','whatsapp_click',{link_url:'orden', transaction_id:String(orden||'')}); }catch(e){}
     window.open(waLink(orderText(orden)), "_blank", "noopener");
     showOrder(orden);   // showOrder ya borra los datos de este navegador
   }

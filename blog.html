@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJCZFSYP1F"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZJCZFSYP1F');
+/* Clics a WhatsApp, telefono y correo en cualquier pagina */
+document.addEventListener('click',function(e){try{var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';
+if(/wa\.me|whatsapp/i.test(h)||a.getAttribute('data-contact')==='wa')gtag('event','whatsapp_click',{link_url:h.slice(0,100)});
+else if(/^tel:/i.test(h))gtag('event','phone_click',{link_url:h});
+else if(/^mailto:/i.test(h))gtag('event','email_click');}catch(x){}},true);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google" content="notranslate">
 <meta name="description" content="Honest guides to getting around Costa Rica: transfer prices, SJO to La Fortuna, Monteverde roads, Manuel Antonio and Guanacaste beaches, plus local food and history.">
