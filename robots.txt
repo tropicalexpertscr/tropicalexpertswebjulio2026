@@ -4,3 +4,4 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://www.tropicalexpertscostarica.com/sitemap.xml
+Sitemap: https://www.tropicalexpertscostarica.com/sitemap-rutas.xml

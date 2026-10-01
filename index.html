@@ -1824,11 +1824,12 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
       <div>
         <h4 data-i18n="ft.routes" data-es="Rutas destacadas">Featured routes</h4>
         <ul>
-          <li><a href="#rutas">SJO → La Fortuna</a></li>
-          <li><a href="#rutas">SJO → Monteverde</a></li>
-          <li><a href="#rutas">LIR → Tamarindo</a></li>
-          <li><a href="#rutas">La Fortuna → Monteverde</a></li>
-          <li><a href="#rutas">SJO → Manuel Antonio</a></li>
+          <li><a href="/shuttle/sjo-airport-to-la-fortuna">SJO → La Fortuna</a></li>
+          <li><a href="/shuttle/liberia-airport-to-la-fortuna">LIR → La Fortuna</a></li>
+          <li><a href="/shuttle/la-fortuna-to-sjo-airport">La Fortuna → SJO</a></li>
+          <li><a href="/shuttle/la-fortuna-to-liberia-airport">La Fortuna → LIR</a></li>
+          <li><a href="/shuttle" data-i18n="ft.allroutes" data-es="Todas las rutas">All routes</a></li>
+          <li><a href="/hotel" data-i18n="ft.hotelpages" data-es="Traslados a hoteles">Hotel transfers</a></li>
         </ul>
       </div>
       <div>
@@ -1870,7 +1871,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
         <div class="bk-steps">
           <ol class="steps">
             <li><b class="num">1</b><div><strong data-i18n="bk.s1t" data-es="Reserve con sus datos de viaje">Book with your trip details</strong><span data-i18n="bk.s1d" data-es="Ruta, fecha, hora, vuelo y hotel. Su número de orden TECR se crea al instante.">Route, date, time, flight and hotel. Your TECR order number is created instantly.</span></div></li>
-            <li><b class="num">2</b><div><strong data-i18n="bk.s2t" data-es="Pague seguro con tarjeta">Pay securely by card</strong><span data-i18n="bk.s2d" data-es="En la página protegida de Tilopay (Visa, Mastercard, Amex). Su tarjeta nunca pasa por nuestro sitio.">On Tilopay's protected page (Visa, Mastercard, Amex). Your card never passes through our site.</span></div></li>
+            <li><b class="num">2</b><div><strong data-i18n="bk.s2t" data-es="Pague seguro con tarjeta">Pay securely by card</strong><span data-i18n="bk.s2d" data-es="En la página protegida de Tilopay (Visa, Mastercard, Amex). Su tarjeta nunca pasa por nuestro sitio. En su estado de cuenta el cargo aparece como TP*TILO.CO.">On Tilopay's protected page (Visa, Mastercard, Amex). Your card never passes through our site.</span></div></li>
             <li><b class="num">3</b><div><strong data-i18n="bk.s3t" data-es="Recibe su comprobante en PDF">You get your PDF voucher</strong><span data-i18n="bk.s3d" data-es="Por correo, con todos los datos de la reserva. El día antes: nombre del conductor, placa y contacto 24/7.">By email, with every booking detail. The day before: driver's name, plate number and 24/7 contact.</span></div></li>
             <li><b class="num">4</b><div><strong data-i18n="bk.s4t" data-es="Lo esperamos en la salida">We meet you at arrivals</strong><span data-i18n="bk.s4d" data-es="Monitoreamos su vuelo: si se atrasa, ajustamos sin cargo.">We track your flight: if it is delayed, we adjust at no charge.</span></div></li>
           </ol>
@@ -3135,7 +3136,7 @@ const I18N = {
   "bk.eyebrow":"Booking","bk.h2":"Book in a minute, with an order number",
   "bk.lede":"Fill in the form, pay securely by card on Tilopay's platform and instantly receive your order number (TECR-###) and the PDF voucher by email.",
   "bk.s1t":"Book with your trip details","bk.s1d":"Route, date, time, flight and hotel. Your TECR order number is created instantly.",
-  "bk.s2t":"Pay securely by card","bk.s2d":"On Tilopay's protected page (Visa, Mastercard, Amex). Your card never passes through our site.",
+  "bk.s2t":"Pay securely by card","bk.s2d":"On Tilopay's protected page (Visa, Mastercard, Amex). Your card never passes through our site. On your card statement the charge shows as TP*TILO.CO.",
   "bk.s3t":"You get your PDF voucher","bk.s3d":"By email, with every booking detail. The day before: driver's name, plate number and 24/7 contact.",
   "bk.s4t":"We meet you at arrivals","bk.s4d":"We track your flight: if it is delayed, we adjust at no charge.",
   "bk.pay1":"Visa · Mastercard · Amex","bk.pay2":"Secure payment by Tilopay","bk.pay3":"Free cancellation up to 48 h before",
@@ -3151,7 +3152,7 @@ const I18N = {
   "bk.antic":"We suggest booking at least 12 hours ahead; from December to April and in July, when demand rises, a few days ahead is wise. Leaving in under 12 hours? Message us on WhatsApp and within minutes we confirm whether a vehicle is available.",
   "bk.hint":"When you book, your order number is created and you go to Tilopay's secure page to pay by card; if online payment is unavailable, we send you the payment link by WhatsApp or email. Your card details never pass through this page and, once you send the booking, your trip details are cleared from this browser. Your PDF voucher arrives by email.",
   "ft.blurb":"Door-to-door private transport across Costa Rica. Flat rates with taxes included, professional drivers and fully insured vehicles. I.C.T. licence #3946-2025.",
-  "ft.nav":"Navigation","ft.routes":"Featured routes","ft.contact":"Contact",
+  "ft.nav":"Navigation","ft.routes":"Featured routes","ft.allroutes":"All routes","ft.hotelpages":"Hotel transfers","ft.contact":"Contact",
   "ft.loc":"La Fortuna, San Carlos","ft.hours":"Open 24/7",
   "ft.legal":"Authorised tourist transport operator · I.C.T. licence #3946-2025"
  }
