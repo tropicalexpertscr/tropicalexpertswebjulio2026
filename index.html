@@ -372,6 +372,18 @@ p{margin:0}
 .veh-foot b{font-family:var(--f-display);font-size:1.75rem;font-weight:500;color:var(--brass-hi)}
 .veh-foot span{font-size:.8rem;color:var(--muted-2)}
 
+/* ---------- banda: chofer privado por días ---------- */
+.drv{margin-top:26px;display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(20px,3vw,40px);align-items:center;padding:clamp(24px,3.4vw,40px);background:linear-gradient(135deg,var(--ink-3),var(--ink-2));border:1px solid var(--brass-line);border-left:4px solid var(--brass);border-radius:var(--r)}
+.drv-eyebrow{font-family:var(--f-cond);text-transform:uppercase;letter-spacing:.18em;font-size:.76rem;color:var(--brass);margin:0 0 8px}
+.drv h3{font-family:var(--f-display);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.1rem);color:var(--bone);margin:0 0 10px;line-height:1.15}
+.drv p.drv-t{color:var(--muted);font-size:.95rem;margin:0 0 18px;max-width:58ch}
+.drv-rates{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.drv-rates div{border:1px solid var(--ink-4);background:var(--ink);padding:12px 8px;text-align:center;border-radius:var(--r)}
+.drv-rates b{display:block;font-family:var(--f-display);font-size:1.5rem;font-weight:500;color:var(--brass-hi)}
+.drv-rates span{font-family:var(--f-cond);text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:var(--muted)}
+.drv-note{font-size:.78rem;color:var(--muted-2);margin:12px 0 0;text-align:center}
+@media (max-width:900px){.drv{grid-template-columns:1fr}}
+
 /* ---------- itinerario de rutas (tabla, no tarjetas) ---------- */
 .hub{margin-bottom:38px}
 .hub-h{
@@ -1532,6 +1544,22 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
           <div class="veh-foot"><b>$220</b><span data-i18n="f.from" data-es="desde · por vehículo, impuestos incluidos">from · per vehicle, taxes included</span></div>
         </div>
       </article>
+    </div>
+    <div class="drv">
+      <div>
+        <p class="drv-eyebrow" data-i18n="drv.eyebrow" data-es="Chofer privado por días">Multi-day private driver</p>
+        <h3 data-i18n="drv.h3" data-es="¿Necesita un chofer para varios días?">Need a driver for several days?</h3>
+        <p class="drv-t" data-i18n="drv.t" data-es="Mismo chofer y mismo vehículo durante todo el viaje. Mínimo 3 días, hasta 12 horas de servicio por día, con combustible, peajes y gastos del chofer incluidos.">The same driver and vehicle for your whole trip. Minimum 3 days, up to 12 hours of service a day, with fuel, tolls and the driver's expenses included.</p>
+        <a class="btn btn--solid" href="/private-driver-costa-rica" data-i18n="drv.cta" data-es="Ver el servicio de chofer privado">See the private driver service</a>
+      </div>
+      <div>
+        <div class="drv-rates">
+          <div><b>$365</b><span>Staria</span></div>
+          <div><b>$450</b><span>Hiace</span></div>
+          <div><b>$545</b><span>Maxus</span></div>
+        </div>
+        <p class="drv-note" data-i18n="drv.note" data-es="Por vehículo, por día · pago en línea · cancelación gratis hasta 48 h">Per vehicle, per day · pay online · free cancellation up to 48 h</p>
+      </div>
     </div>
     <p class="hint" style="margin-top:18px;text-align:center" data-i18n="f.ilus" data-es="Imágenes ilustrativas del modelo. Usted escoge el tipo de vehículo — Staria, Hiace o Maxus — y ese es el que lo recoge, con la capacidad y el equipamiento indicados.">Illustrative images of each model. You choose the vehicle type — Staria, Hiace or Maxus — and that is what picks you up, with the capacity and equipment listed.</p>
   </div>
@@ -3055,6 +3083,9 @@ const I18N = {
   "f.v3cap":"10 to 12 passengers · 12 large bags","f.v3a":"Corporate groups, private tours and events",
   "f.v3b":"Panoramic windows and reclining seats","f.v3c":"Luggage hold separated from the cabin",
   "f.from":"from · per vehicle, taxes included",
+  "drv.eyebrow":"Multi-day private driver","drv.h3":"Need a driver for several days?",
+  "drv.t":"The same driver and vehicle for your whole trip. Minimum 3 days, up to 12 hours of service a day, with fuel, tolls and the driver's expenses included.",
+  "drv.cta":"See the private driver service","drv.note":"Per vehicle, per day · pay online · free cancellation up to 48 h",
   "f.ilus":"Illustrative images of each model. You choose the vehicle type — Staria, Hiace or Maxus — and that is what picks you up, with the capacity and equipment listed.",
   "s.eyebrow":"Two ways to travel","s.h2":"Arrive straight there, or arrive with stories to tell",
   "s.badge":"Most popular","s.vipT":"Tropical Experts VIP","s.stdT":"Standard","s.stdPrice":"Included","s.ideal":"Ideal for",
