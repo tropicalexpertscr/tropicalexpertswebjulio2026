@@ -420,6 +420,19 @@ p{margin:0}
 .chip:hover{border-color:var(--brass-line);color:var(--brass-hi)}
 .chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:var(--ink)}
 
+/* ---------- VIP dorado: estrella y brillo en todas partes ---------- */
+.tier--vip{border-color:#E7CE95!important;box-shadow:0 0 0 1px rgba(231,206,149,.55),0 0 38px rgba(231,206,149,.28),0 18px 40px rgba(0,0,0,.35)!important}
+.tier-badge::before{content:"\2605  "}
+.tier--vip .tier-price{background:linear-gradient(135deg,#F5D98B,#C6A15B);color:#0B0A09;font-weight:700;padding:4px 14px;border-radius:999px;box-shadow:0 0 18px rgba(245,217,139,.55)}
+.tier--vip .tier-price::before{content:"\2605 "}
+.btrip-vip{border:2px solid #E7CE95!important;background:linear-gradient(135deg,rgba(231,206,149,.20),rgba(198,161,91,.06))!important;box-shadow:0 0 20px rgba(231,206,149,.25);align-items:center!important;padding:13px 15px!important}
+.btrip-vip span b::before{content:"\2605  ";color:#F5D98B;text-shadow:0 0 10px rgba(245,217,139,.8)}
+.btrip-vip span b{color:#F5D98B!important}
+.btrip-vip em{background:linear-gradient(135deg,#F5D98B,#C6A15B);color:#0B0A09!important;padding:4px 12px;border-radius:999px;font-weight:700;box-shadow:0 0 14px rgba(245,217,139,.45)}
+.q-vip{margin:14px 0 0;padding:12px 14px;border:1.5px solid #E7CE95;border-radius:var(--r);background:linear-gradient(135deg,rgba(231,206,149,.18),rgba(198,161,91,.05));box-shadow:0 0 18px rgba(231,206,149,.22);color:var(--bone);font-size:.9rem;line-height:1.45}
+.q-vip b{color:#F5D98B}
+.q-vip b::before{content:"\2605  ";text-shadow:0 0 10px rgba(245,217,139,.8)}
+
 /* ---------- comparativa estándar / VIP ---------- */
 .tiers{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
 @media (max-width:760px){.tiers{grid-template-columns:1fr}}
@@ -1358,6 +1371,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
             <li><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M2 8.4 6.2 12.6 14 4.4"/></svg><span data-i18n="q.k2" data-es="Seguimos su vuelo">We track your flight</span></li>
             <li><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M2 8.4 6.2 12.6 14 4.4"/></svg><span data-i18n="q.k3" data-es="Orden y comprobante al instante">Order and receipt right away</span></li>
           </ul>
+          <p class="q-vip"><b data-i18n="q.vipHintB" data-es="Tropical Experts VIP: +$80">Tropical Experts VIP: +$80</b> <span data-i18n="q.vipHint" data-es="— paradas turísticas, chofer bilingüe garantizado y kit de bienvenida. Se agrega en el siguiente paso.">— sightseeing stops, guaranteed bilingual driver and welcome kit. Add it in the next step.</span></p>
           <p class="q-fine" data-i18n="q.perVehicle" data-es="Precio final por vehículo · impuestos incluidos">USD · final price per vehicle, taxes included</p>
           <button type="button" class="q-chain" id="qChain"></button>
           <a class="q-waline" id="qWa" href="#" target="_blank" rel="noopener" data-i18n="q.waLine" data-es="¿Ruta especial o alguna duda? Escríbanos por WhatsApp →">Special route or a question? Message us on WhatsApp →</a>
@@ -1549,7 +1563,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
       <div>
         <p class="drv-eyebrow" data-i18n="drv.eyebrow" data-es="Chofer privado por días">Multi-day private driver</p>
         <h3 data-i18n="drv.h3" data-es="¿Necesita un chofer para varios días?">Need a driver for several days?</h3>
-        <p class="drv-t" data-i18n="drv.t" data-es="Mismo chofer y mismo vehículo durante todo el viaje. Mínimo 3 días, hasta 12 horas de servicio por día, con combustible, peajes y gastos del chofer incluidos.">The same driver and vehicle for your whole trip. Minimum 3 days, up to 12 hours of service a day, with fuel, tolls and the driver's expenses included.</p>
+        <p class="drv-t" data-i18n="drv.t" data-es="Mismo chofer y mismo vehículo durante todo el viaje. Mínimo 3 días, 12 horas de servicio y 105 millas (169 km) por día incluidas, con combustible, peajes y gastos del chofer incluidos.">The same driver and vehicle for your whole trip. Minimum 3 days, 12 hours of service and 105 miles (169 km) a day included, with fuel, tolls and the driver's expenses included.</p>
         <a class="btn btn--solid" href="/private-driver-costa-rica" data-i18n="drv.cta" data-es="Ver el servicio de chofer privado">See the private driver service</a>
       </div>
       <div>
@@ -3060,6 +3074,7 @@ const I18N = {
   "q.mi1":"Instant price","q.mi2":"Free cancellation","q.mi3":"Taxes included",
   "q.errRoute":"Choose an origin and a destination to continue.",
   "q.vehicle":"Vehicle","q.pax":"Passengers","q.date":"Date","q.time":"Pick-up time","q.service":"Service",
+  "q.vipHintB":"Tropical Experts VIP: +$80","q.vipHint":"— sightseeing stops, guaranteed bilingual driver and welcome kit. Add it in the next step.",
   "q.std":"Standard — direct transfer","q.vip":"Tropical Experts VIP — 1 to 2 h of stops (+$80)","q.cta":"See price",
   "q.hours":"Extra hours of stops","q.h0":"None",
   "q.hoursHint":"Hours for unhurried sightseeing with your driver as guide: $35 each. VIP already includes 1 to 2; add more here.",
@@ -3084,7 +3099,7 @@ const I18N = {
   "f.v3b":"Panoramic windows and reclining seats","f.v3c":"Luggage hold separated from the cabin",
   "f.from":"from · per vehicle, taxes included",
   "drv.eyebrow":"Multi-day private driver","drv.h3":"Need a driver for several days?",
-  "drv.t":"The same driver and vehicle for your whole trip. Minimum 3 days, up to 12 hours of service a day, with fuel, tolls and the driver's expenses included.",
+  "drv.t":"The same driver and vehicle for your whole trip. Minimum 3 days, 12 hours of service and 105 miles (169 km) a day included, with fuel, tolls and the driver's expenses included.",
   "drv.cta":"See the private driver service","drv.note":"Per vehicle, per day · pay online · free cancellation up to 48 h",
   "f.ilus":"Illustrative images of each model. You choose the vehicle type — Staria, Hiace or Maxus — and that is what picks you up, with the capacity and equipment listed.",
   "s.eyebrow":"Two ways to travel","s.h2":"Arrive straight there, or arrive with stories to tell",
