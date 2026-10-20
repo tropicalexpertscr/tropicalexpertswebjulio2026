@@ -1,0 +1,1 @@
+SUBIR-9 (revisado): subir las carpetas es, hotel, shuttle y el archivo sitemap-rutas.xml a la raiz de GitHub.
