@@ -1722,13 +1722,13 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
       <a class="post" href="blog/uber-en-costa-rica.html">
         <div class="post-meta"><b data-i18n="b.p16cat" data-es="Logística">Logistics</b><span data-i18n="b.p16min" data-es="5 min de lectura">5 min read</span></div>
         <h3 data-i18n="b.p16t" data-es="¿Hay Uber en Costa Rica? Lo que le sirve y lo que no, sin adornos">Is there Uber in Costa Rica? What it is good for and what it is not, plainly</h3>
-        <p data-i18n="b.p16d" data-es="Uber funciona bien dentro de San José y falla justo donde el turista lo necesita: rutas largas, aeropuertos y pueblos de playa. Dónde usarlo y qué usar en su lugar.">Uber works well inside San José and fails exactly where travellers need it: long routes, airports and beach towns. Where to use it and what to use instead.</p>
+        <p data-i18n="b.p16d" data-es="Uber funciona bien dentro de San José y falla justo donde el turista lo necesita: rutas largas, aeropuertos y pueblos de playa. Dónde usarlo y qué usar en su lugar.">Uber works well inside San José and fails exactly where travelers need it: long routes, airports and beach towns. Where to use it and what to use instead.</p>
         <span class="more" data-i18n="b.read" data-es="Leer la guía →">Read the guide →</span>
       </a>
       <a class="post" href="blog/carro-shuttle-o-traslado-privado.html">
         <div class="post-meta"><b data-i18n="b.p3cat" data-es="Logística">Logistics</b><span data-i18n="b.p3min" data-es="6 min de lectura">6 min read</span></div>
         <h3 data-i18n="b.p3t" data-es="Alquilar carro, shuttle compartido o traslado privado: los números reales">Rental car, shared shuttle or private transfer: the real numbers</h3>
-        <p data-i18n="b.p3d" data-es="Sumamos alquiler, seguro obligatorio, gasolina, peajes y parqueos de hotel para una familia de cuatro en diez días. El resultado sorprende a la mayoría de viajeros que llegan decididos a manejar.">We added up rental, mandatory insurance, fuel, tolls and hotel parking for a family of four over ten days. The result surprises most travellers who arrive set on driving themselves.</p>
+        <p data-i18n="b.p3d" data-es="Sumamos alquiler, seguro obligatorio, gasolina, peajes y parqueos de hotel para una familia de cuatro en diez días. El resultado sorprende a la mayoría de viajeros que llegan decididos a manejar.">We added up rental, mandatory insurance, fuel, tolls and hotel parking for a family of four over ten days. The result surprises most travelers who arrive set on driving themselves.</p>
         <span class="more" data-i18n="b.read" data-es="Leer la guía →">Read the guide →</span>
       </a>
     </div>
@@ -2108,8 +2108,8 @@ const CFG = {
     tripadvisor: {
       url:"https://www.tripadvisor.com/Attraction_Review-g309226-d33223166-Reviews-Tropical_Experts_Costa_Rica-La_Fortuna_de_San_Carlos_Arenal_Volcano_National_Par.html",
       rating:5.0, total:36,
-      rank_es:"#26 de 171 empresas de transporte en La Fortuna",
-      rank_en:"#26 of 171 transport companies in La Fortuna"
+      rank_es:"",
+      rank_en:""
     },
     google: {
       url:"https://www.google.com/search?q=tropical+experts+costa+rica&oq=&gs_lcrp=EgZjaHJvbWUqCQgAECMYJxjqAjIJCAAQIxgnGOoCMgkIARAjGCcY6gIyCQgCECMYJxjqAjIJCAMQIxgnGOoCMgkIBBAjGCcY6gIyDwgFEC4YJxivARjHARjqAjIJCAYQIxgnGOoCMgkIBxAjGCcY6gLSAQkxNDY5ajBqMTWoAgiwAgHxBfMOC2-EY0Qc8QXzDgtvhGNEHA&sourceid=chrome&source=chrome.rb&ie=UTF-8#lrd=0x8085751f1fdb7477:0x8ed6ffec6a539b77,1,,,,",   // panel de reseñas de Google (búsqueda)
@@ -3193,7 +3193,7 @@ const I18N = {
   "b.p15d":"Until July 1968 locals called it «the hill» and farmed its slopes. The blast that buried two villages ended up founding, unplanned, the entire destination La Fortuna is today.",
   "b.p16cat":"Logistics","b.p16min":"5 min read",
   "b.p16t":"Is there Uber in Costa Rica? What it is good for and what it is not, plainly",
-  "b.p16d":"Uber works well inside San José and fails exactly where travellers need it: long routes, airports and beach towns. Where to use it and what to use instead.",
+  "b.p16d":"Uber works well inside San José and fails exactly where travelers need it: long routes, airports and beach towns. Where to use it and what to use instead.",
   "b.p4cat":"Culture and flavour","b.p4min":"8 min read",
   "b.p4t":"The soda: the restaurant Costa Rica invented by accident",
   "b.p4d":"The name comes from the fizzy-drink counters in 1950s San Jose pharmacies. Today it is where the whole country eats for seven dollars. We explain the unwritten rules and how to spot a good one.",
@@ -3213,7 +3213,7 @@ const I18N = {
   "b.p2d":"From May to November prices drop, the waterfalls run full and the volcano clears earlier in the day. We explain when to leave, what to pack and when the weather genuinely forces a change of plan.",
   "b.p3cat":"Logistics","b.p3min":"6 min read",
   "b.p3t":"Rental car, shared shuttle or private transfer: the real numbers",
-  "b.p3d":"We added up rental, mandatory insurance, fuel, tolls and hotel parking for a family of four over ten days. The result surprises most travellers who arrive set on driving themselves.",
+  "b.p3d":"We added up rental, mandatory insurance, fuel, tolls and hotel parking for a family of four over ten days. The result surprises most travelers who arrive set on driving themselves.",
   "fq.eyebrow":"Frequently asked","fq.h2":"What everyone asks before booking",
   "bk.eyebrow":"Booking","bk.h2":"Book in a minute, with an order number",
   "bk.lede":"Fill in the form, pay securely by card on Tilopay's platform and instantly receive your order number (TECR-###) and the PDF voucher by email.",
@@ -4544,6 +4544,17 @@ const MSG = {
     fillRouteSelects(); renderRoutes(); renderDest(); renderFaq(); renderRevs(); renderBadge(); renderSocial();
 
     $("#qChain").addEventListener("click", chainNext);
+
+    /* Reserva con la ruta ya elegida: /?lang=en&from=SJO&to=La%20Fortuna#cotizador
+       (los botones «Book online» de las páginas de ruta lo usan). Si la ruta no existe, no hace nada. */
+    try{
+      const qp = new URLSearchParams(location.search), pf = qp.get("from"), pt = qp.get("to");
+      if(pf && pt && findRoute(pf, pt)){
+        $("#qFrom").value = pf; $("#qFromInput").value = placeName(pf);
+        $("#qTo").value = pt;   $("#qToInput").value = placeName(pt);
+        showPrices();
+      }
+    }catch(e){}
     ["bAdults","bKids"].forEach(id => { const el = $("#"+id); if(el) el.addEventListener("input", syncSeats); });
     const goq = $("#bGoQuote");
     if(goq) goq.addEventListener("click", () => {
