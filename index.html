@@ -2098,9 +2098,9 @@ const CFG = {
 
   // Los precios de cada ruta ya están definidos por vehículo en la matriz ROUTES.
   vehiculos: {
-    staria: { nombre:"Hyundai Staria", pax:"1–5",   campo:"p5"  },
-    hiace:  { nombre:"Toyota Hiace",   pax:"6–9",   campo:"p9"  },
-    maxus:  { nombre:"Maxus V90",      pax:"10–12", campo:"p12" }
+    staria: { nombre:"Hyundai Staria", pax:"1–5",   cap:5,  campo:"p5"  },
+    hiace:  { nombre:"Toyota Hiace",   pax:"6–9",   cap:9,  campo:"p9"  },
+    maxus:  { nombre:"Maxus V90",      pax:"10–12", cap:12, campo:"p12" }
   },
 
   // IVA: los precios mostrados YA lo incluyen (servicios turísticos = 13 % en Costa Rica)
@@ -4755,6 +4755,7 @@ const MSG = {
     if(!Array.isArray(raw)) raw = [];
     CART = raw
       .filter(t => t && PLACES[t.from] && PLACES[t.to] && findRoute(t.from, t.to) && CFG.vehiculos[t.veh])
+      .slice(0, 12)
       .map(t => ({
         from:t.from, to:t.to, rid:(findRoute(t.from,t.to)||{}).id, veh:t.veh,
         tier:t.tier === "vip" ? "vip" : "std", horas:+t.horas || 0,
@@ -5050,6 +5051,10 @@ const MSG = {
                : "Add your trip first: search the route and pick a vehicle.", true);
       return false;
     }
+    /* Capacidad: los niños ocupan asiento. Nunca más pasajeros de los que lleva el vehículo. */
+    const paxTot = Math.max(1, parseInt($("#bAdults").value,10) || 1) + Math.max(0, parseInt($("#bKids").value,10) || 0);
+    const capDe = k => +(CFG.vehiculos[k] || {}).cap || 0;
+    const capMax = Math.max.apply(null, Object.keys(CFG.vehiculos).map(capDe));
     CART.forEach((t,i) => {
       const faltan = [];
       if(!t.date) faltan.push(L ? "la fecha" : "the date");
@@ -5061,6 +5066,18 @@ const MSG = {
       /* La recogida no puede ser una hora que ya pasó (hora de Costa Rica). */
       const mins = minutosHastaViaje(t.date, t.time);
       const pasada = mins !== null && mins < 0;
+      const cap = capDe(t.veh);
+      const exceso = cap > 0 && paxTot > cap;
+      let msgCap = "";
+      if(exceso){
+        const v = CFG.vehiculos[t.veh].nombre;
+        const sirve = Object.keys(CFG.vehiculos).filter(k => capDe(k) >= paxTot).sort((a,b) => capDe(a) - capDe(b))[0];
+        msgCap = paxTot > capMax
+          ? (L ? "Son " + paxTot + " pasajeros: el vehículo más grande lleva " + capMax + ". Escríbanos por WhatsApp y le cotizamos el grupo al momento."
+               : "That is " + paxTot + " passengers: our largest vehicle carries " + capMax + ". Message us on WhatsApp and we will quote your group right away.")
+          : (L ? paxTot + " pasajeros no caben en el " + v + " del tramo " + (i+1) + " (lleva hasta " + cap + "). Quite este tramo y agréguelo de nuevo con el " + CFG.vehiculos[sirve].nombre + " (hasta " + capDe(sirve) + ")."
+               : paxTot + " passengers do not fit in the " + v + " on trip " + (i+1) + " (up to " + cap + "). Remove this trip and add it again with the " + CFG.vehiculos[sirve].nombre + " (up to " + capDe(sirve) + ").");
+      }
       const el = document.querySelector('[data-err="'+i+'"]');
       if(el){
         el.textContent = faltan.length
@@ -5069,10 +5086,10 @@ const MSG = {
           : pasada
           ? (L ? "La hora de recogida del tramo " + (i+1) + " ya pasó (hora de Costa Rica). Escoja otra hora o fecha."
                : "The pick-up time on trip " + (i+1) + " has already passed (Costa Rica time). Choose another time or date.")
-          : "";
-        el.classList.toggle("show", faltan.length > 0 || pasada);
+          : msgCap;
+        el.classList.toggle("show", faltan.length > 0 || pasada || exceso);
       }
-      if(faltan.length || pasada) ok = false;
+      if(faltan.length || pasada || exceso) ok = false;
       if(t.date && availability(t.date) === "no"){ ok = false; showOk(m("noDate"), true); }
     });
     /* Sin esto, los errores se pintaban cientos de píxeles arriba de donde el cliente
@@ -5114,8 +5131,8 @@ const MSG = {
   function orderPayload(){
     const g = id => ($("#"+id) ? $("#"+id).value.trim() : "");
     const trips = orderTrips();
-    const adultos = parseInt(g("bAdults"),10) || 1;
-    const ninos   = parseInt(g("bKids"),10) || 0;
+    const adultos = Math.max(1, parseInt(g("bAdults"),10) || 1);
+    const ninos   = Math.max(0, parseInt(g("bKids"),10) || 0);
     return {
       idioma: LANG, nombre: g("bName"), correo: g("bEmail"), whatsapp: g("bPhone"),
       notas: g("bNotes"), adultos: adultos, ninos: ninos, pax: adultos + ninos,
@@ -5250,7 +5267,7 @@ const MSG = {
       /* Límite de espera: sin esto, una red que acepta la conexión y no contesta
          (wifi de hotel o aeropuerto) dejaba el botón en "Generando su orden…" para siempre. */
       const corte = new AbortController();
-      const reloj = setTimeout(() => corte.abort(), 40000);   // el servidor puede tardar 5-15 s (Tilopay + PDF + correos)
+      const reloj = setTimeout(() => corte.abort(), 90000);   // el servidor puede tardar 5-40 s (Tilopay + calendario + PDF + correos)
       try{
         const res = await fetch(CFG.ordenes.endpoint, { method:"POST", body: JSON.stringify(orderPayload()), signal: corte.signal });
         const j = await res.json();
@@ -5289,10 +5306,15 @@ const MSG = {
     const L = LANG === "es", box = $("#orderBox");
     $("#bookOk").classList.remove("show");
     const propio = /^(sin conexión|tiempo agotado|sin respuesta)$/.test(motivo);
-    const titulo = propio
+    const titulo = motivo === "tiempo agotado"
+      ? (L ? "Revise su correo antes de reintentar" : "Check your email before trying again")
+      : propio
       ? (L ? "No pudimos crear su orden" : "We could not create your order")
       : (L ? "No se pudo reservar" : "Booking could not be completed");
-    const texto = propio
+    const texto = motivo === "tiempo agotado"
+      ? (L ? "El servidor tardó más de lo normal y es posible que su orden SÍ se haya creado. Antes de intentar de nuevo, revise su correo (también la carpeta de spam): si le llegó un número de orden TECR, NO reserve otra vez — pague con el botón de ese correo. Si no le llegó nada en 5 minutos, intente de nuevo o escríbanos por WhatsApp."
+           : "The server took longer than usual and your order MAY have been created. Before trying again, check your email (including spam): if you received a TECR order number, do NOT book again — pay with the button in that email. If nothing arrives within 5 minutes, try again or message us on WhatsApp.")
+      : propio
       ? (L ? "Parece que la conexión falló. Sus datos siguen aquí, no se ha perdido nada: puede intentar de nuevo, o mandarnos la reserva por WhatsApp con un toque."
            : "The connection seems to have failed. Your details are still here, nothing was lost: you can try again, or send us your booking on WhatsApp with one tap.")
       : escHtml(motivo);
