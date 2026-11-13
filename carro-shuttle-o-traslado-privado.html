@@ -79,6 +79,8 @@ padding-bottom:28px;border-bottom:1px solid var(--ink-4)}
 .art p{margin:0 0 17px;line-height:1.78}
 .art strong{color:var(--bone);font-weight:600}
 .art em{color:var(--brass-hi);font-style:italic}
+.art a.inl{color:var(--brass-hi);border-bottom:1px solid var(--brass-line);transition:.2s}
+.art a.inl:hover{border-bottom-color:var(--brass-hi)}
 .art ul,.art ol{margin:0 0 18px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
 .art li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);line-height:1.7}
 .art li::before{content:"";width:5px;height:5px;margin-top:10px;background:var(--brass);
@@ -205,7 +207,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 <body>
 <header class="hdr"><div class="wrap hdr-in">
   <a href="/" class="brand" translate="no"><b>Tropical Experts</b><span>Costa Rica</span></a>
-  <a href="/" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
+  <a href="/blog" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
   <div class="lang" role="group" aria-label="Idioma / Language">
     <button type="button" data-lang="es" aria-pressed="false">ES</button>
     <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -221,7 +223,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
   <div data-l="es"><h1>Alquilar carro, shuttle compartido o traslado privado: los números reales</h1><p class="standfirst">El precio que anuncia una rentadora nunca es el que usted paga. Sumamos todo lo que de verdad se cobra —seguro obligatorio incluido— y lo comparamos con el shuttle compartido y con el traslado privado. El resultado no es el que esperábamos.</p>
 <p>Esta es probablemente la primera decisión logística de su viaje, y la que más plata mueve. También es donde más información engañosa hay, porque los precios que se anuncian y los que se pagan no se parecen.</p>
 
-<p>Hicimos el ejercicio completo con una ruta clásica: <strong>familia de cuatro, diez días, aeropuerto SJO → La Fortuna → Monteverde → Manuel Antonio → aeropuerto SJO.</strong> Unos 900 kilómetros contando los paseos locales.</p>
+<p>Hicimos el ejercicio completo con una ruta clásica: <strong>familia de cuatro, diez días, aeropuerto SJO → La Fortuna → Monteverde → <a class="inl" href="/blog/manuel-antonio-guia-honesta">Manuel Antonio</a> → aeropuerto SJO.</strong> Unos 900 kilómetros contando los paseos locales.</p>
 
 <h2>El truco del seguro obligatorio</h2>
 
@@ -318,7 +320,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
   <div data-l="en" class="on"><h1>Rental car, shared shuttle or private transfer: the real numbers</h1><p class="standfirst">The price a rental company advertises is never the price you pay. We added up everything that actually gets charged — mandatory insurance included — and compared it against the shared shuttle and the private transfer. The result was not what we expected.</p>
 <p>This is probably the first logistical decision of your trip and the one that moves the most money. It is also where the most misleading information sits, because advertised prices and paid prices are not the same thing here.</p>
 
-<p>We ran the full exercise on a classic route: <strong>family of four, ten days, SJO airport → La Fortuna → Monteverde → Manuel Antonio → SJO airport.</strong> About 900 kilometers counting local driving.</p>
+<p>We ran the full exercise on a classic route: <strong>family of four, ten days, SJO airport → La Fortuna → Monteverde → <a class="inl" href="/blog/manuel-antonio-guia-honesta">Manuel Antonio</a> → SJO airport.</strong> About 900 kilometers counting local driving.</p>
 
 <h2>The mandatory insurance trick</h2>
 

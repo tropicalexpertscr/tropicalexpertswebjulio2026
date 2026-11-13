@@ -79,6 +79,8 @@ padding-bottom:28px;border-bottom:1px solid var(--ink-4)}
 .art p{margin:0 0 17px;line-height:1.78}
 .art strong{color:var(--bone);font-weight:600}
 .art em{color:var(--brass-hi);font-style:italic}
+.art a.inl{color:var(--brass-hi);border-bottom:1px solid var(--brass-line);transition:.2s}
+.art a.inl:hover{border-bottom-color:var(--brass-hi)}
 .art ul,.art ol{margin:0 0 18px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
 .art li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);line-height:1.7}
 .art li::before{content:"";width:5px;height:5px;margin-top:10px;background:var(--brass);
@@ -205,7 +207,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 <body>
 <header class="hdr"><div class="wrap hdr-in">
   <a href="/" class="brand" translate="no"><b>Tropical Experts</b><span>Costa Rica</span></a>
-  <a href="/" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
+  <a href="/blog" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
   <div class="lang" role="group" aria-label="Idioma / Language">
     <button type="button" data-lang="es" aria-pressed="false">ES</button>
     <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -229,7 +231,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 
 <p>Lo que pasó después es la parte interesante. A finales de los sesenta y en los setenta, esos mostradores empezaron a servir algo de comer junto con la bebida. Primero un emparedado. Después un desayuno. Después el almuerzo completo. Y en algún momento la bebida dejó de ser el negocio y la comida pasó a serlo — pero el rótulo nunca cambió.</p>
 
-<p>Así que cuando usted entra a una soda en Guanacaste o en Limón y pide un casado, está usando el nombre de una máquina de gaseosas que desapareció hace medio siglo. <em>Nadie lo decidió. Simplemente el nombre le ganó al negocio.</em></p>
+<p>Así que cuando usted entra a una soda en Guanacaste o en Limón y pide un <a class="inl" href="/blog/anatomia-del-casado">casado</a>, está usando el nombre de una máquina de gaseosas que desapareció hace medio siglo. <em>Nadie lo decidió. Simplemente el nombre le ganó al negocio.</em></p>
 
 <div class="note">
 <h4>El dato que rompe el hielo</h4>
@@ -309,7 +311,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 
 <p>What happened next is the interesting part. In the late sixties and through the seventies, those counters began serving something to eat alongside the drink. First a sandwich. Then breakfast. Then a full lunch. And at some point the drink stopped being the business and the food took over — but the sign never changed.</p>
 
-<p>So when you walk into a soda in Guanacaste or Limón and order a casado, you are using the name of a fizzy-drink machine that disappeared half a century ago. <em>Nobody decided this. The name simply outlived the business.</em></p>
+<p>So when you walk into a soda in Guanacaste or Limón and order a <a class="inl" href="/blog/anatomia-del-casado">casado</a>, you are using the name of a fizzy-drink machine that disappeared half a century ago. <em>Nobody decided this. The name simply outlived the business.</em></p>
 
 <div class="note">
 <h4>The icebreaker</h4>

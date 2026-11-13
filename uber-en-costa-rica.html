@@ -79,6 +79,8 @@ padding-bottom:28px;border-bottom:1px solid var(--ink-4)}
 .art p{margin:0 0 17px;line-height:1.78}
 .art strong{color:var(--bone);font-weight:600}
 .art em{color:var(--brass-hi);font-style:italic}
+.art a.inl{color:var(--brass-hi);border-bottom:1px solid var(--brass-line);transition:.2s}
+.art a.inl:hover{border-bottom-color:var(--brass-hi)}
 .art ul,.art ol{margin:0 0 18px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
 .art li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);line-height:1.7}
 .art li::before{content:"";width:5px;height:5px;margin-top:10px;background:var(--brass);
@@ -205,7 +207,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 <body>
 <header class="hdr"><div class="wrap hdr-in">
   <a href="/" class="brand" translate="no"><b>Tropical Experts</b><span>Costa Rica</span></a>
-  <a href="/" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
+  <a href="/blog" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
   <div class="lang" role="group" aria-label="Idioma / Language">
     <button type="button" data-lang="es" aria-pressed="false">ES</button>
     <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -227,7 +229,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 
 <h2>Donde empieza el problema</h2>
 
-<p>El turismo de Costa Rica no pasa en la ciudad: pasa en La Fortuna, Monteverde, Manuel Antonio, Tamarindo, el Caribe. Y ahí el modelo de Uber se desarma por tres razones que vivimos todas las semanas.</p>
+<p>El turismo de Costa Rica no pasa en la ciudad: pasa en La Fortuna, Monteverde, <a class="inl" href="/blog/manuel-antonio-guia-honesta">Manuel Antonio</a>, Tamarindo, el Caribe. Y ahí el modelo de Uber se desarma por tres razones que vivimos todas las semanas.</p>
 
 <p><strong>La cancelación en cadena.</strong> Pida un Uber del aeropuerto a La Fortuna y observe: el conductor acepta, ve el destino — tres horas de montaña — y cancela. El siguiente igual. El que finalmente acepta suele pedir un monto «por fuera», sin recibo, porque sabe que regresa vacío. A esa altura usted lleva 40 minutos en la acera con las maletas.</p>
 
@@ -270,7 +272,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 
 <h2>Where the trouble starts</h2>
 
-<p>Costa Rica's tourism does not happen in the city: it happens in La Fortuna, Monteverde, Manuel Antonio, Tamarindo, the Caribbean. And there, Uber's model falls apart for three reasons we watch play out every week.</p>
+<p>Costa Rica's tourism does not happen in the city: it happens in La Fortuna, Monteverde, <a class="inl" href="/blog/manuel-antonio-guia-honesta">Manuel Antonio</a>, Tamarindo, the Caribbean. And there, Uber's model falls apart for three reasons we watch play out every week.</p>
 
 <p><strong>The cancellation chain.</strong> Request an Uber from the airport to La Fortuna and watch: a driver accepts, sees the destination — three hours of mountain — and cancels. The next one, the same. The one who finally accepts usually asks for an off-app amount, no receipt, because he knows he drives back empty. By then you have spent 40 minutes on the curb with your bags.</p>
 

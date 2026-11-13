@@ -79,6 +79,8 @@ padding-bottom:28px;border-bottom:1px solid var(--ink-4)}
 .art p{margin:0 0 17px;line-height:1.78}
 .art strong{color:var(--bone);font-weight:600}
 .art em{color:var(--brass-hi);font-style:italic}
+.art a.inl{color:var(--brass-hi);border-bottom:1px solid var(--brass-line);transition:.2s}
+.art a.inl:hover{border-bottom-color:var(--brass-hi)}
 .art ul,.art ol{margin:0 0 18px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
 .art li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);line-height:1.7}
 .art li::before{content:"";width:5px;height:5px;margin-top:10px;background:var(--brass);
@@ -205,7 +207,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 <body>
 <header class="hdr"><div class="wrap hdr-in">
   <a href="/" class="brand" translate="no"><b>Tropical Experts</b><span>Costa Rica</span></a>
-  <a href="/" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
+  <a href="/blog" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
   <div class="lang" role="group" aria-label="Idioma / Language">
     <button type="button" data-lang="es" aria-pressed="false">ES</button>
     <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -219,7 +221,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
     <span data-l="es">Actualizado en agosto de 2026</span><span data-l="en" class="on">Updated August 2026</span>
   </div>
   <div data-l="es"><h1>Caribe Sur: el otro país que cabe dentro de Costa Rica</h1><p class="standfirst">Costa Rica tiene dos mares y mucha gente solo conoce uno. El que cruza el país entero hasta Puerto Viejo de Talamanca encuentra otra cosa: cultura afrocaribeña con idioma propio, playas de arena negra junto a playas de arena dorada, un arrecife de coral y —esto sorprende a todos— el mejor clima del país en setiembre y octubre, cuando el Pacífico está pasado por agua.</p>
-<p>Hay una frase que usamos con los clientes cuando pasamos el cruce de Siquirres y el aire empieza a oler distinto: bienvenidos al otro país. No es exageración. El Caribe Sur tiene otra música, otra comida, otro idioma en las sodas —el inglés criollo limonense— y otro calendario de lluvias. Lo único que comparte con el Pacífico es el pasaporte.</p>
+<p>Hay una frase que usamos con los clientes cuando pasamos el cruce de Siquirres y el aire empieza a oler distinto: bienvenidos al otro país. No es exageración. El Caribe Sur tiene otra música, otra comida, otro idioma en las <a class="inl" href="/blog/soda-costa-rica">sodas</a> —el inglés criollo limonense— y otro calendario de lluvias. Lo único que comparte con el Pacífico es el pasaporte.</p>
 
 <h2>La llegada es parte del viaje</h2>
 
@@ -264,7 +266,7 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
     <div class="firma"><span class="firma-i">TE</span><div><b translate="no">Tropical Experts Costa Rica</b>Los expertos tropicales · Licencia I.C.T. #3946-2025</div></div>
   </div>
   <div data-l="en" class="on"><h1>The South Caribbean: the other country that fits inside Costa Rica</h1><p class="standfirst">Costa Rica has two seas and most visitors only meet one. Cross the whole country to Puerto Viejo de Talamanca and you find something else: Afro-Caribbean culture with its own language, black-sand beaches next to golden ones, a coral reef and — this surprises everyone — the country's best weather in September and October, when the Pacific is under water.</p>
-<p>There is a line we use with our passengers when we pass the Siquirres junction and the air starts to smell different: welcome to the other country. It is not an exaggeration. The South Caribbean has different music, different food, a different language in the sodas — Limón Creole English — and a different rain calendar. The only thing it shares with the Pacific is the passport.</p>
+<p>There is a line we use with our passengers when we pass the Siquirres junction and the air starts to smell different: welcome to the other country. It is not an exaggeration. The South Caribbean has different music, different food, a different language in the <a class="inl" href="/blog/soda-costa-rica">sodas</a> — Limón Creole English — and a different rain calendar. The only thing it shares with the Pacific is the passport.</p>
 
 <h2>Getting there is part of the trip</h2>
 
