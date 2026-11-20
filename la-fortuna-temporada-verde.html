@@ -29,7 +29,11 @@ else if(/^mailto:/i.test(h))gtag('event','email_click');}catch(x){}},true);
 <meta name="twitter:title" content="La Fortuna in the Rainy Season: Why It's Worth It">
 <meta name="twitter:description" content="Half the world skips Costa Rica from May to November for fear of rain. Those who come find hotels at half price and waterfalls at full power. What to expect.">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_CR">
 <link rel="canonical" href="https://www.tropicalexpertscostarica.com/blog/la-fortuna-temporada-verde">
+<link rel="alternate" hreflang="en" href="https://www.tropicalexpertscostarica.com/blog/la-fortuna-temporada-verde">
+<link rel="alternate" hreflang="es" href="https://www.tropicalexpertscostarica.com/es/blog/la-fortuna-temporada-verde">
+<link rel="alternate" hreflang="x-default" href="https://www.tropicalexpertscostarica.com/blog/la-fortuna-temporada-verde">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600&display=swap" media="print" onload="this.media='all';this.onload=null">
@@ -61,9 +65,9 @@ h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0
 font-weight:500;color:var(--muted);padding-block:4px;border-bottom:1px solid transparent;transition:.2s}
 .back:hover{color:var(--brass-hi);border-bottom-color:var(--brass)}
 .lang{display:flex;border:1px solid var(--ink-4);border-radius:var(--r);overflow:hidden;flex-shrink:0}
-.lang button{background:transparent;border:0;padding:7px 11px;cursor:pointer;font-family:var(--f-cond);
+.lang a,.lang span{background:transparent;border:0;padding:7px 11px;cursor:pointer;font-family:var(--f-cond);
 text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;font-weight:600;color:var(--muted-2);transition:.2s}
-.lang button[aria-pressed="true"]{background:var(--brass);color:var(--ink)}
+.lang span{background:var(--brass);color:var(--ink);cursor:default}
 @media (max-width:620px){.brand span{display:none}.back{display:none}}
 /* artículo */
 .art{padding-block:clamp(40px,6vw,72px) clamp(50px,7vw,88px)}
@@ -80,11 +84,11 @@ padding-bottom:28px;border-bottom:1px solid var(--ink-4)}
 .art strong{color:var(--bone);font-weight:600}
 .art em{color:var(--brass-hi);font-style:italic}
 .art ul,.art ol{margin:0 0 18px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
-.art li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);line-height:1.7}
-.art li::before{content:"";width:5px;height:5px;margin-top:10px;background:var(--brass);
+.art li{position:relative;padding-left:17px;color:var(--muted);line-height:1.7}
+.art li::before{position:absolute;left:0;top:0;content:"";width:5px;height:5px;margin-top:10px;background:var(--brass);
 flex-shrink:0;transform:rotate(45deg)}
 .art ol{counter-reset:n}
-.art ol li{counter-increment:n}
+.art ol li{counter-increment:n;padding-left:27px}
 .art ol li::before{content:counter(n);width:auto;height:auto;margin:0;background:none;transform:none;
 font-family:var(--f-cond);color:var(--brass);font-weight:600;min-width:15px;font-variant-numeric:tabular-nums}
 /* recuadros */
@@ -144,8 +148,8 @@ color:var(--brass-hi);margin:0 0 8px;font-weight:600}
 .fuentes h4{font-family:var(--f-cond);text-transform:uppercase;letter-spacing:.17em;font-size:.73rem;
 color:var(--muted-2);margin:0 0 12px;font-weight:600}
 .fuentes ol{margin:0;padding:0;list-style:none;counter-reset:f;display:flex;flex-direction:column;gap:8px}
-.fuentes li{counter-increment:f;display:flex;gap:10px;font-size:.83rem;color:var(--muted-2);line-height:1.6}
-.fuentes li::before{content:counter(f) ".";color:var(--brass);font-variant-numeric:tabular-nums;
+.art .fuentes li{counter-increment:f;padding-left:26px;font-size:.83rem;color:var(--muted-2);line-height:1.6}
+.art .fuentes li::before{content:counter(f) ".";color:var(--brass);font-variant-numeric:tabular-nums;
 min-width:16px;background:none;width:auto;height:auto;margin:0;transform:none}
 .fuentes a{color:var(--muted);border-bottom:1px solid var(--ink-4);transition:.2s}
 .fuentes a:hover{color:var(--brass-hi);border-bottom-color:var(--brass)}
@@ -196,110 +200,26 @@ display:flex;flex-direction:column;gap:9px;transition:border-color .3s}
 background:var(--jade);color:var(--bone);display:flex;align-items:center;justify-content:center;
 border:1px solid rgba(127,183,155,.34);box-shadow:0 8px 26px rgba(0,0,0,.5);transition:.25s}
 .wa:hover{transform:translateY(-3px);background:#4A8069}
-[data-l]{display:none}
-[data-l].on{display:block}
-li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
 </style>
 <script type="application/ld+json" id="ld-te">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://www.tropicalexpertscostarica.com/blog/la-fortuna-temporada-verde#articulo","mainEntityOfPage":"https://www.tropicalexpertscostarica.com/blog/la-fortuna-temporada-verde","headline":"La Fortuna in the Rainy Season: Why It's Worth It","description":"Half the world skips Costa Rica from May to November for fear of rain. Those who come find hotels at half price and waterfalls at full power. What to expect.","inLanguage":"en","datePublished":"2026-08-15","dateModified":"2026-08-15","image":"https://www.tropicalexpertscostarica.com/img/og.jpg","author":{"@type":"Organization","name":"Tropical Experts Costa Rica","url":"https://www.tropicalexpertscostarica.com/"},"publisher":{"@type":"Organization","name":"Tropical Experts Costa Rica","logo":{"@type":"ImageObject","url":"https://www.tropicalexpertscostarica.com/img/logo-te.png"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tropicalexpertscostarica.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.tropicalexpertscostarica.com/blog"},{"@type":"ListItem","position":3,"name":"La Fortuna in the Rainy Season: Why It's Worth It","item":"https://www.tropicalexpertscostarica.com/blog/la-fortuna-temporada-verde"}]}]}</script>
 </head>
 <body>
 <header class="hdr"><div class="wrap hdr-in">
   <a href="/" class="brand" translate="no"><b>Tropical Experts</b><span>Costa Rica</span></a>
-  <a href="/blog" class="back"><span data-l="es">← Todos los artículos</span><span data-l="en" class="on">← All articles</span></a>
+  <a href="/blog" class="back"><span>← All articles</span></a>
   <div class="lang" role="group" aria-label="Idioma / Language">
-    <button type="button" data-lang="es" aria-pressed="false">ES</button>
-    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <a href="/es/blog/la-fortuna-temporada-verde" hreflang="es" lang="es" aria-label="ES – Leer en español">ES</a>
+    <span aria-current="true">EN</span>
   </div>
 </div></header>
 
 <article class="art"><div class="wrap art-in">
   <div class="kicker">
-    <b data-l="es">Arenal</b><b data-l="en" class="on">Arenal</b>
-    <span data-l="es">5 min de lectura</span><span data-l="en" class="on">5 min read</span>
-    <span data-l="es">Actualizado en agosto de 2026</span><span data-l="en" class="on">Updated August 2026</span>
+    <b>Arenal</b>
+    <span>5 min read</span>
+    <span>Updated August 2026</span>
   </div>
-  <div data-l="es"><h1>La Fortuna en temporada de lluvia: por qué sigue siendo la mejor época</h1><p class="standfirst">Medio mundo evita Costa Rica entre mayo y noviembre por miedo a la lluvia. Los que vienen igual encuentran hoteles a mitad de precio, cataratas con el triple de agua y parques sin fila. Le explicamos cómo funciona de verdad la lluvia en La Fortuna.</p>
-<p>En Costa Rica le decimos temporada verde, y no es puro mercadeo. De mayo a noviembre el país cambia de color: lo que en marzo era pasto amarillo en abril ya es verde intenso, los ríos se llenan y el bosque se pone denso.</p>
-
-<p>Pero la razón por la que insistimos con la temporada verde no es estética. Es que <strong>la lluvia tropical no funciona como la gente se imagina.</strong></p>
-
-<figure class="fig fig--wide"><img src="../img/art-fortuna-aerea.webp" alt="Vista aérea de La Fortuna de San Carlos con el volcán Arenal al fondo" width="760" height="950" loading="lazy" decoding="async"><figcaption>La Fortuna desde el aire en plena temporada verde. El pueblo cabe en una cuadrícula de diez calles; todo lo demás es potrero, bosque y el cono del Arenal cerrando el valle.</figcaption></figure>
-
-<h2>No llueve todo el día</h2>
-
-<p>El error más común es pensar que llover en temporada verde significa un día gris de lluvia continua, como en Europa o Norteamérica. Casi nunca es así.</p>
-
-<p>El patrón normal en La Fortuna es este: mañanas despejadas o con nubes altas, calor subiendo hasta el mediodía, y el aguacero entrando entre la una y las cuatro de la tarde. Cae fuerte —de verdad fuerte— durante una o dos horas, y después escampa. Muchas tardes terminan con el cielo abierto y un atardecer limpio.</p>
-
-<p>Eso significa que usted tiene <em>toda la mañana</em> para hacer lo que vino a hacer. Y las mañanas de temporada verde suelen ser mejores que las de temporada seca, por una razón que a mucha gente le sorprende.</p>
-
-<h2>El volcán se ve mejor, no peor</h2>
-
-<p>El Arenal tiene fama de estar siempre tapado. Es cierto que la cima pasa buena parte del tiempo entre nubes, pero la ventana para verlo completo es bastante predecible: <strong>entre las 6 y las 9 de la mañana.</strong></p>
-
-<p>En temporada verde el aguacero de la tarde anterior barre la humedad de la atmósfera. Amanece más limpio. No es raro que en setiembre y octubre —los meses que todo el mundo evita— haya amaneceres con el cono perfectamente definido, mientras que en enero, con el viento alisio empujando nubes contra la montaña, el volcán amanece encapotado varios días seguidos.</p>
-
-<div class="note">
-<h4>Si su prioridad es ver el volcán</h4>
-<p>Pida el traslado para llegar a La Fortuna la tarde anterior y ponga el despertador a las 5:30. Levantarse temprano un día vale más que quedarse tres noches y verlo siempre a media mañana.</p>
-</div>
-
-<h2>Las cataratas están en su mejor momento</h2>
-
-<p>La catarata de La Fortuna en marzo es bonita. En octubre es otra cosa: un chorro grueso, ruidoso, con neblina de agua que se siente desde la escalera. La diferencia de caudal entre temporada seca y verde es enorme.</p>
-
-<figure class="figs"><img src="../img/art-fortuna-catarata.webp" alt="Familia frente a la catarata de La Fortuna con el caudal alto de la temporada verde" width="760" height="1013" loading="lazy" decoding="async"><img src="../img/art-fortuna-puentes.webp" alt="Pasajeros en un puente colgante del bosque de La Fortuna entre neblina" width="760" height="1013" loading="lazy" decoding="async"><figcaption>Clientes nuestros, el mismo mes que todo el mundo evita. Izquierda: la catarata de La Fortuna con el caudal de octubre. Derecha: los puentes colgantes con la neblina que solo se da cuando llueve — la foto que en marzo no existe.</figcaption></figure>
-
-<p>Lo mismo con el río Celeste, que queda a poco más de una hora. Su color turquesa depende de que baje agua suficiente para mover los minerales del fondo — en plena sequía a veces se ve deslavado. Con lluvia se pone de ese azul irreal de las fotos.</p>
-
-<p>La contra: cuando llueve muchísimo, el río Celeste puede enturbiarse y perder el color por un día o dos. Es cuestión de suerte y de preguntar antes de salir.</p>
-
-<h2>Lo que sí cambia de verdad: el precio</h2>
-
-<div class="tw"><table>
-<thead><tr><th>Concepto</th><th>Temporada alta</th><th>Temporada verde</th></tr></thead>
-<tbody>
-<tr><td>Hoteles</td><td>Tarifa plena</td><td>Entre 25 % y 40 % menos</td></tr>
-<tr><td>Disponibilidad</td><td>Reservar con meses</td><td>Casi siempre hay campo</td></tr>
-<tr><td>Filas en parques</td><td>Largas de 8 a 11 a. m.</td><td>Prácticamente ninguna</td></tr>
-<tr><td>Tours privados</td><td>Cupo limitado</td><td>Grupos más pequeños</td></tr>
-<tr><td>Termales</td><td>Llenas en la tarde</td><td>Tranquilas</td></tr>
-</tbody></table></div>
-
-<p>Y hay algo que no aparece en ninguna tabla: en temporada verde bañarse en aguas termales mientras cae el aguacero es de las mejores experiencias que da esta zona. El agua a 40 grados, la lluvia tibia cayendo encima y el vapor subiendo. Nadie se acuerda de que estaba lloviendo.</p>
-
-<h2>Cuándo sí conviene mover el plan</h2>
-
-<p>Seamos honestos: no todo es igual de bueno.</p>
-
-<ul>
-<li><strong>Setiembre y octubre en el Pacífico sur</strong> —Uvita, Drake, Corcovado— son los meses más lluviosos del país. En el Caribe, en cambio, esos mismos meses suelen ser de los mejores del año. El país tiene climas opuestos según el lado.</li>
-<li><strong>Los temporales</strong> son la excepción real: dos o tres días seguidos de lluvia continua, sin la pausa de la mañana. Pasan pocas veces al año, generalmente entre setiembre y noviembre, y sí obligan a reacomodar el plan.</li>
-<li><strong>Las caminatas de montaña con barro</strong> son más resbalosas y algunos senderos cierran temporalmente. Bota o zapato con buena suela, no tenis lisos.</li>
-</ul>
-
-<h2>Qué empacar</h2>
-
-<ol>
-<li>Impermeable liviano con capucha. No sombrilla — con viento no sirve de nada.</li>
-<li>Dos pares de zapatos, para poder secar uno mientras usa el otro.</li>
-<li>Bolsas plásticas o funda seca para el celular y la cámara.</li>
-<li>Repelente. Con lluvia hay más zancudos, sobre todo al atardecer.</li>
-<li>Una muda liviana de más. Con la humedad, la ropa tarda en secar.</li>
-</ol>
-
-<div class="note">
-<h4>Lo esencial</h4>
-
-<p>En temporada verde llueve casi todas las tardes, casi nunca todo el día. Las mañanas son suyas, el volcán amanece más despejado, las cataratas están en su punto y los hoteles cuestan bastante menos. Planifique las actividades temprano y deje la tarde libre.</p>
-</div>
-
-<figure class="fig fig--wide"><img src="../img/art-fortuna-flota.webp" alt="Dos busetas de Tropical Experts Costa Rica al atardecer con el volcán Arenal al fondo" width="1200" height="675" loading="lazy" decoding="async"><figcaption>Nuestras unidades saliendo de La Fortuna al final del día. En temporada verde el horario lo pone el clima: salimos temprano, aprovechamos la mañana despejada y volvemos antes del aguacero de la tarde. Eso un bus de horario fijo no lo puede hacer.</figcaption></figure>
-
-    
-    <div class="firma"><span class="firma-i">TE</span><div><b translate="no">Tropical Experts Costa Rica</b>Los expertos tropicales · Licencia I.C.T. #3946-2025</div></div>
-  </div>
-  <div data-l="en" class="on"><h1>La Fortuna in the rainy season: why it is still the best time to come</h1><p class="standfirst">Half the world avoids Costa Rica between May and November for fear of rain. Those who come anyway find hotels at half price, waterfalls at triple volume and parks with no lines. Here is how the rain actually works in La Fortuna.</p>
+  <div><h1>La Fortuna in the rainy season: why it is still the best time to come</h1><p class="standfirst">Half the world avoids Costa Rica between May and November for fear of rain. Those who come anyway find hotels at half price, waterfalls at triple volume and parks with no lines. Here is how the rain actually works in La Fortuna.</p>
 <p>In Costa Rica we call it the green season, and that is not just marketing. From May to November the country changes color: what was yellow pasture in March is deep green by April, the rivers fill and the forest thickens.</p>
 
 <p>But the reason we push the green season is not scenery. It is that <strong>tropical rain does not behave the way people imagine.</strong></p>
@@ -381,53 +301,30 @@ li[data-l].on,td[data-l].on,span[data-l].on,b[data-l].on{display:revert}
     <div class="firma"><span class="firma-i">TE</span><div><b translate="no">Tropical Experts Costa Rica</b>The tropical experts · I.C.T. license #3946-2025</div></div>
   </div>
 
-  <aside class="autor"><span class="autor-i">JP</span><div class="autor-b"><small><span data-l="es">El fundador</span><span data-l="en" class="on">The founder</span></small><h4>Johnson Paniagua Berrocal</h4><p class="rol"><span data-l="es">Fundador · Tropical Experts Costa Rica</span><span data-l="en" class="on">Founder · Tropical Experts Costa Rica</span></p><p><span data-l="es">Fundé Tropical Experts Costa Rica en 2023 junto a mi esposa Andrea Segura, después de más de 21 años en el turismo — guía de canopy en Sky Trek, rafting, y hoteles como Tabacón y Arenal Kioro — y 8 años como detective del OIJ. Vivo en La Fortuna con mi familia, y estas guías las escribo con lo que se aprende manejando estas rutas cada semana. Licencia I.C.T. #3946-2025.</span><span data-l="en" class="on">I founded Tropical Experts Costa Rica in 2023 with my wife Andrea Segura, after more than 21 years in tourism — canopy guide at Sky Trek, rafting, and hotels like Tabacón and Arenal Kioro — and 8 years as a detective with Costa Rica's OIJ. I live in La Fortuna with my family, and I write these guides from what you learn driving these routes every week. I.C.T. license #3946-2025.</span></p><div class="autor-l"><a href="https://wa.me/50684867057" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:tropicalexpertscr@gmail.com">Correo</a><a href="/#cotizador"><span data-l="es">Cotizar un traslado</span><span data-l="en" class="on">Get a quote</span></a></div></div></aside>
+  <aside class="autor"><span class="autor-i">JP</span><div class="autor-b"><small><span>The founder</span></small><h4>Johnson Paniagua Berrocal</h4><p class="rol"><span>Founder · Tropical Experts Costa Rica</span></p><p><span>I founded Tropical Experts Costa Rica in 2023 with my wife Andrea Segura, after more than 21 years in tourism — canopy guide at Sky Trek, rafting, and hotels like Tabacón and Arenal Kioro — and 8 years as a detective with Costa Rica's OIJ. I live in La Fortuna with my family, and I write these guides from what you learn driving these routes every week. I.C.T. license #3946-2025.</span></p><div class="autor-l"><a href="https://wa.me/50684867057" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:tropicalexpertscr@gmail.com">Email</a><a href="/#cotizador"><span>Get a quote</span></a></div></div></aside>
 
   <div class="cta">
-    <h3 data-l="es">¿Viene en temporada verde?</h3><h3 data-l="en" class="on">Coming in the green season?</h3>
-    <p data-l="es">Le coordinamos el traslado con la hora que le convenga para el clima, no la que le quede al bus. Precio final por vehículo.</p><p data-l="en" class="on">We schedule your transfer around the weather, not around a bus timetable. Final price per vehicle.</p>
+    <h3>Coming in the green season?</h3>
+    <p>We schedule your transfer around the weather, not around a bus timetable. Final price per vehicle.</p>
     <div class="cta-row">
-      <a class="btn" href="/#cotizador"><span data-l="es">Ver el precio de mi ruta</span><span data-l="en" class="on">See my route price</span></a>
-      <a class="btn btn--g" href="https://wa.me/50684867057" target="_blank" rel="noopener"><span data-l="es">Preguntar por WhatsApp</span><span data-l="en" class="on">Ask on WhatsApp</span></a>
+      <a class="btn" href="/#cotizador"><span>See my route price</span></a>
+      <a class="btn btn--g" href="https://wa.me/50684867057" target="_blank" rel="noopener"><span>Ask on WhatsApp</span></a>
     </div>
   </div>
 </div></article>
 
 <section class="more"><div class="wrap">
-  <h2><span data-l="es">Siga leyendo</span><span data-l="en" class="on">Keep reading</span></h2>
-  <div class="more-g"><a class="mcard" href="/blog/como-llegar-a-monteverde"><span data-l="es">Monteverde</span><span data-l="en" class="on">Monteverde</span><h3 data-l="es">Cómo llegar a Monteverde sin perder el día: las tres rutas y cuál conviene</h3><h3 data-l="en" class="on">Getting to Monteverde without losing a day: the three roads and which to take</h3></a><a class="mcard" href="/blog/manuel-antonio-guia-honesta"><span data-l="es">Manuel Antonio</span><span data-l="en" class="on">Manuel Antonio</span><h3 data-l="es">Manuel Antonio sin filas ni sorpresas: la guía honesta del parque más visitado</h3><h3 data-l="en" class="on">Manuel Antonio without lines or surprises: an honest guide to the most visited park</h3></a></div>
+  <h2><span>Keep reading</span></h2>
+  <div class="more-g"><a class="mcard" href="/blog/como-llegar-a-monteverde"><span>Monteverde</span><h3>Getting to Monteverde without losing a day: the three roads and which to take</h3></a><a class="mcard" href="/blog/manuel-antonio-guia-honesta"><span>Manuel Antonio</span><h3>Manuel Antonio without lines or surprises: an honest guide to the most visited park</h3></a></div>
 </div></section>
 
 <footer class="ftr"><div class="wrap">
-  <p>© 2026 Tropical Experts Costa Rica · <span data-l="es">Licencia I.C.T. #3946-2025</span><span data-l="en" class="on">I.C.T. license #3946-2025</span></p>
+  <p>© 2026 Tropical Experts Costa Rica · <span>I.C.T. license #3946-2025</span></p>
   <p><a href="https://wa.me/50684867057" target="_blank" rel="noopener">+506 8486 7057</a> · <a href="mailto:tropicalexpertscr@gmail.com">tropicalexpertscr@gmail.com</a></p>
 </div></footer>
 
 <a class="wa" href="https://wa.me/50684867057" target="_blank" rel="noopener" aria-label="WhatsApp">
 <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-1.2 1.3-1.1 3 .3 4.9 1.3 1.9 3 3.5 5.5 4.4 1.6.6 2.6.6 3.4.4.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.3-8 8.3z"/></svg></a>
 
-<script>
-(function(){
-  function set(l){
-    document.documentElement.lang = l;
-    document.querySelectorAll("[data-l]").forEach(function(e){
-      e.classList.toggle("on", e.getAttribute("data-l") === l);
-    });
-    document.querySelectorAll(".lang button").forEach(function(b){
-      b.setAttribute("aria-pressed", String(b.dataset.lang === l));
-    });
-    try{ localStorage.setItem("te_lang", l); }catch(e){}
-  }
-  document.querySelectorAll(".lang button").forEach(function(b){
-    b.addEventListener("click", function(){ set(b.dataset.lang); });
-  });
-  /* La página abre en inglés; si el visitante ya escogió español, se respeta. */
-  var saved = null;
-  try{ saved = localStorage.getItem("te_lang"); }catch(e){}
-  var url = new URLSearchParams(location.search).get("lang");
-  if(url === "es" || url === "en") saved = url;
-  set(saved === "es" ? "es" : "en");
-})();
-</script>
 </body>
 </html>
