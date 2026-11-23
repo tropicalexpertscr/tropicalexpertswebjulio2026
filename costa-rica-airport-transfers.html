@@ -274,6 +274,33 @@ p{margin:0}
 .grp{margin-top:34px}
 .grp h2{font-size:clamp(1.3rem,2.2vw,1.7rem);margin-bottom:16px}</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://www.tropicalexpertscostarica.com/#empresa","name":"Tropical Experts Costa Rica","url":"https://www.tropicalexpertscostarica.com/","telephone":"+506-8486-7057","email":"tropicalexpertscr@gmail.com","image":"https://www.tropicalexpertscostarica.com/img/og.jpg","address":{"@type":"PostalAddress","addressLocality":"La Fortuna","addressRegion":"Alajuela","addressCountry":"CR"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tropicalexpertscostarica.com/"},{"@type":"ListItem","position":2,"name":"Costa Rica airport transfers","item":"https://www.tropicalexpertscostarica.com/costa-rica-airport-transfers"}]},{"@type":"Service","@id":"https://www.tropicalexpertscostarica.com/costa-rica-airport-transfers#service","name":"Costa Rica airport transfers","serviceType":"Airport shuttle","provider":{"@id":"https://www.tropicalexpertscostarica.com/#empresa"},"areaServed":{"@type":"Country","name":"Costa Rica"},"offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":60,"highPrice":665,"offerCount":92}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens if my flight is delayed?","acceptedAnswer":{"@type":"Answer","text":"We track your flight, and if it lands late we adjust the pickup at no charge."}},{"@type":"Question","name":"Do you pick up late at night?","acceptedAnswer":{"@type":"Answer","text":"Yes. We work 24 hours a day with no night surcharge, at both SJO and Liberia airports."}},{"@type":"Question","name":"Where do we meet the driver?","acceptedAnswer":{"@type":"Answer","text":"Just outside the terminal exit, after customs. Your driver will be holding a sign with your name."}},{"@type":"Question","name":"Are child seats included?","acceptedAnswer":{"@type":"Answer","text":"Yes, child seats are free on request. Tell us the children's ages when you book."}},{"@type":"Question","name":"How do I pay?","acceptedAnswer":{"@type":"Answer","text":"Online by card (Visa, Mastercard or Amex) in US dollars on Tilopay's secure page. You get a PDF voucher by email."}},{"@type":"Question","name":"Can I cancel?","acceptedAnswer":{"@type":"Answer","text":"Yes, cancellation is free up to 48 hours before pickup."}}]}]}</script>
+<style id="te-cro">
+/* SUBIR-38 · franja de reserva bajo el H1 (celular/tableta; en hubs siempre) y barra fija Book + WhatsApp (≤760 px) */
+.qbar{display:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:10px;margin:2px 0 18px;padding:12px 14px;background:var(--ink-2);border:1px solid var(--brass-line);border-radius:var(--r)}
+.qbar--all{display:grid}
+@media (max-width:900px){.qbar{display:grid}}
+@media (min-width:901px){.qbar--all .btn{display:none}}
+.qbar-p{grid-column:1/-1;margin:0;color:var(--muted);font-size:.95rem;line-height:1.2}
+.qbar-p b{font-family:var(--f-display);font-weight:500;font-size:1.65rem;color:var(--brass-hi);margin:0 2px}
+.qbar .btn{padding:11px 10px;white-space:nowrap}
+.qbar .btn--wa svg{flex:0 0 auto}
+.qbar--1 .btn{grid-column:1/-1}
+@media (max-width:380px){.qbar .btn{white-space:normal;letter-spacing:.06em;padding:11px 6px;gap:6px}}
+.qbar-l{grid-column:1/-1;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.84rem;line-height:1.45;color:var(--muted)}
+.qbar-l li{white-space:nowrap}
+.qbar-l a{color:var(--bone);border-bottom:1px solid var(--brass-line)}
+.qbar-l .st{color:var(--brass)}
+.mbar{display:none}
+@media (max-width:760px){
+ .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:65;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(11,10,9,.96);border-top:1px solid var(--brass-line)}
+ .mbar--1{grid-template-columns:1fr}
+ .mbar .btn{padding:13px 10px}
+ body{padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+ html{scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+ .waf{display:none}
+}
+@media print{.mbar,.qbar{display:none!important}body{padding-bottom:0!important}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -291,6 +318,7 @@ p{margin:0}
   <div>
     <p class="eyebrow">Licensed by the Costa Rica Tourism Board · ICT 3946-2025</p>
     <h1>Costa Rica Airport Transfers</h1>
+      <div class="qbar qbar--all" role="group" aria-label="Price and booking"><p class="qbar-p">from <b class="num">$60</b> per vehicle</p><a class="btn btn--solid" href="/?lang=en#cotizador">Book now</a><a class="btn btn--wa" href="https://wa.me/50684867057?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20an%20airport%20transfer%20in%20Costa%20Rica." target="_blank" rel="noopener" aria-label="Book on WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-1.2 1.3-1.1 3 .3 4.9 1.3 1.9 3 3.5 5.5 4.4 1.6.6 2.6.6 3.4.4.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.3-8 8.3z"/></svg><span>WhatsApp</span></a><ul class="qbar-l"><li>SJO &amp; Liberia (LIR) airports</li><li><a href="https://www.google.com/search?q=tropical+experts+costa+rica#lrd=0x8085751f1fdb7477:0x8ed6ffec6a539b77,1,,,," target="_blank" rel="noopener"><span class="st" aria-hidden="true">★</span> 5.0 · 112 Google reviews</a></li><li>ICT license #3946-2025</li></ul></div>
     <p class="lede">Private airport transfers from San José (SJO) and Liberia (LIR) to 53 destinations across Costa Rica. Your driver meets you at arrivals with a name sign and tracks your flight. One flat price per vehicle, from $60, taxes included.</p>
     <ul class="chips"><li>SJO and Liberia</li><li>24 hours, no night surcharge</li><li>Flight tracking</li><li>Free child seats</li></ul>
     <p style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn--solid" href="/?lang=en#cotizador">Book online</a><a class="btn btn--wa" href="https://wa.me/50684867057?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20an%20airport%20transfer%20in%20Costa%20Rica." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-1.2 1.3-1.1 3 .3 4.9 1.3 1.9 3 3.5 5.5 4.4 1.6.6 2.6.6 3.4.4.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.3-8 8.3z"/></svg><span>WhatsApp</span></a></p>
@@ -357,6 +385,7 @@ p{margin:0}
   </div>
 </footer>
 </div>
+<div class="mbar" role="region" aria-label="Quick booking"><a class="btn btn--solid" href="/?lang=en#cotizador">Book</a><a class="btn btn--wa" href="https://wa.me/50684867057?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20an%20airport%20transfer%20in%20Costa%20Rica." target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-1.2 1.3-1.1 3 .3 4.9 1.3 1.9 3 3.5 5.5 4.4 1.6.6 2.6.6 3.4.4.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.3-8 8.3z"/></svg><span>WhatsApp</span></a></div>
 <a class="waf" href="https://wa.me/50684867057" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7 1-.9 1.2c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-1.2 1.3-1.1 3 .3 4.9 1.3 1.9 3 3.5 5.5 4.4 1.6.6 2.6.6 3.4.4.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.5 3.7-8.2 8.2-8.2s8.2 3.7 8.2 8.2-3.6 8.3-8 8.3z"/></svg></a>
 </body>
 </html>

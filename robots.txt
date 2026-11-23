@@ -6,3 +6,4 @@ Disallow: /api/
 Sitemap: https://www.tropicalexpertscostarica.com/sitemap.xml
 Sitemap: https://www.tropicalexpertscostarica.com/sitemap-rutas.xml
 Sitemap: https://www.tropicalexpertscostarica.com/sitemap-destinos.xml
+Sitemap: https://www.tropicalexpertscostarica.com/sitemap-fortuna.xml
