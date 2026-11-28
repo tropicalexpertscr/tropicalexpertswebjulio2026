@@ -432,6 +432,15 @@ p{margin:0}
 .q-vip{margin:14px 0 0;padding:12px 14px;border:1.5px solid #FFE08A;border-radius:var(--r);background:linear-gradient(135deg,rgba(231,206,149,.18),rgba(232,196,74,.05));box-shadow:0 0 18px rgba(231,206,149,.22);color:var(--bone);font-size:.9rem;line-height:1.45}
 .q-vip b{color:#F5D98B}
 .q-vip b::before{content:"\2605  ";text-shadow:0 0 10px rgba(245,217,139,.8)}
+.q-vip{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:box-shadow .15s,background .15s}
+.q-vip:hover{box-shadow:0 0 24px rgba(231,206,149,.4)}
+.q-vip:focus-visible{outline:3px solid #F5D98B;outline-offset:2px}
+.q-vip-t{flex:1}
+.q-vip-chk{flex:0 0 24px;height:24px;border:2px solid #FFE08A;border-radius:7px;position:relative;background:rgba(0,0,0,.25)}
+.q-vip-st{flex:0 0 auto;font-style:normal;font-weight:700;font-size:.82rem;white-space:nowrap;padding:6px 12px;border-radius:999px;background:linear-gradient(135deg,#F5D98B,#E8C44A);color:#0B0A09;box-shadow:0 0 14px rgba(245,217,139,.45)}
+.q-vip[aria-pressed="true"]{background:linear-gradient(135deg,rgba(245,217,139,.38),rgba(232,196,74,.14));box-shadow:0 0 0 2px #F5D98B,0 0 28px rgba(245,217,139,.45)}
+.q-vip[aria-pressed="true"] .q-vip-chk{background:#E8C44A;border-color:#F5D98B}
+.q-vip[aria-pressed="true"] .q-vip-chk::after{content:"";position:absolute;left:6px;top:1px;width:6px;height:12px;border:solid #0B0A09;border-width:0 3px 3px 0;transform:rotate(45deg)}
 
 /* ---------- comparativa estándar / VIP ---------- */
 .tiers{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
@@ -1755,7 +1764,7 @@ a.soc:hover{border-color:var(--brass);color:var(--brass-hi);transform:translateY
             <li><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M2 8.4 6.2 12.6 14 4.4"/></svg><span data-i18n="q.k2" data-es="Seguimos su vuelo">We track your flight</span></li>
             <li><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M2 8.4 6.2 12.6 14 4.4"/></svg><span data-i18n="q.k3" data-es="Orden y comprobante al instante">Order and receipt right away</span></li>
           </ul>
-          <p class="q-vip"><b data-i18n="q.vipHintB" data-es="Tropical Experts VIP: +$80">Tropical Experts VIP: +$80</b> <span data-i18n="q.vipHint" data-es="— paradas turísticas, chofer bilingüe garantizado y kit de bienvenida. Se agrega en el siguiente paso.">— sightseeing stops, guaranteed bilingual driver and welcome kit. Add it in the next step.</span></p>
+          <button type="button" class="q-vip" id="qVip" aria-pressed="false"><span class="q-vip-chk" aria-hidden="true"></span><span class="q-vip-t"><b data-i18n="q.vipHintB" data-es="Tropical Experts VIP: +$80">Tropical Experts VIP: +$80</b> <span data-i18n="q.vipHint" data-es="— paradas turísticas, chofer bilingüe garantizado y kit de bienvenida. Toque para agregarlo.">— sightseeing stops, guaranteed bilingual driver and welcome kit. Tap to add it.</span></span><em class="q-vip-st" id="qVipSt">+$80</em></button>
           <p class="q-fine" data-i18n="q.perVehicle" data-es="Precio final por vehículo · impuestos incluidos">USD · final price per vehicle, taxes included</p>
           <button type="button" class="q-chain" id="qChain"></button>
           <a class="q-waline" id="qWa" href="#" target="_blank" rel="noopener" data-i18n="q.waLine" data-es="¿Ruta especial o alguna duda? Escríbanos por WhatsApp →">Special route or a question? Message us on WhatsApp →</a>
@@ -4655,7 +4664,7 @@ const I18N = {
   "q.mi1":"Instant price","q.mi2":"Free cancellation","q.mi3":"Taxes included",
   "q.errRoute":"Choose an origin and a destination to continue.",
   "q.vehicle":"Vehicle","q.pax":"Passengers","q.date":"Date","q.time":"Pick-up time","q.service":"Service",
-  "q.vipHintB":"Tropical Experts VIP: +$80","q.vipHint":"— sightseeing stops, guaranteed bilingual driver and welcome kit. Add it in the next step.",
+  "q.vipHintB":"Tropical Experts VIP: +$80","q.vipHint":"— sightseeing stops, guaranteed bilingual driver and welcome kit. Tap to add it.",
   "q.std":"Standard — direct transfer","q.vip":"Tropical Experts VIP — 1 to 2 h of stops (+$80)","q.cta":"See price",
   "q.hours":"Extra hours of stops","q.h0":"None",
   "q.hoursHint":"Hours for unhurried sightseeing with your driver: $35 each. VIP already includes 1 to 2; add more here.",
@@ -5119,7 +5128,7 @@ const MSG = {
       const rec = caben[0];
       const lista = qShowAll ? caben : [rec];
       $("#qVehs").innerHTML = lista.map(k => {
-        const v = CFG.vehiculos[k], p = price(r, k, "std", 0);
+        const v = CFG.vehiculos[k], p = price(r, k, PREF_TIER, 0);
         const etiqueta = k !== rec ? "" : '<em class="q-veh-badge">' +
           (n === 1 ? (L ? "Recomendado para 1 pasajero" : "Best fit for 1 passenger")
                    : (L ? "Recomendado para " + n + " pasajeros" : "Best fit for " + n + " passengers")) + "</em><br>";
@@ -5137,7 +5146,20 @@ const MSG = {
       }
     }
     $("#qChain").textContent = (L ? "Continuar desde " : "Continue from ") + placeName(r.to) + "  →";
+    pintarVip();
     $("#qWa").href = waLink(quoteText());
+  }
+  /* Interruptor VIP del primer paso: se toca y los precios y el viaje agregado ya lo llevan. */
+  function pintarVip(){
+    const b = $("#qVip"); if(!b) return;
+    const on = PREF_TIER === "vip", L = LANG === "es";
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    const ht = b.querySelector('[data-i18n="q.vipHint"]');
+    if(ht) ht.textContent = on ? (L ? "— paradas turísticas, chofer bilingüe y kit de bienvenida incluidos. Toque para quitarlo."
+                                     : "— sightseeing stops, bilingual driver and welcome kit included. Tap to remove.")
+                               : (L ? (ht.dataset.es || ht.textContent) : (I18N.en["q.vipHint"] || ht.textContent));
+    const st = $("#qVipSt"); if(st) st.textContent = on ? (L ? "Agregado ✓" : "Added ✓") : "+" + money(CFG.vipExtra);
+    b.setAttribute("aria-label", (L ? "Tropical Experts VIP, " : "Tropical Experts VIP, ") + (on ? (L ? "agregado. Toque para quitarlo" : "added. Tap to remove") : (L ? "toque para agregarlo por " : "tap to add for ") + money(CFG.vipExtra)));
   }
   function backStep1(){
     $("#qRes").classList.remove("open");
@@ -5677,8 +5699,9 @@ const MSG = {
     let t = m("hi") + "\n\n" + m("route") + ": " + routeLabel(r) + "\n" + m("dur") + ": " + dur(r.h) + "\n";
     Object.keys(CFG.vehiculos).forEach(k => {
       const v = CFG.vehiculos[k];
-      t += v.nombre + " (" + v.pax + " pax): " + money(price(r, k, "std", 0).total) + "\n";
+      t += v.nombre + " (" + v.pax + " pax): " + money(price(r, k, PREF_TIER, 0).total) + "\n";
     });
+    if(PREF_TIER === "vip") t += (L ? "Servicio: Tropical Experts VIP (incluido en los precios)\n" : "Service: Tropical Experts VIP (included in the prices)\n");
     return t + (L ? "\n¿Me confirma disponibilidad?" : "\nCould you confirm availability?");
   }
   const waLink = txt => "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(txt);
@@ -6331,6 +6354,7 @@ const MSG = {
       setTimeout(() => { const i = $("#qFromInput"); if(i && !$("#qFrom").value) i.focus(); }, 500);
     }));
     $("#qBack").addEventListener("click", backStep1);
+    $("#qVip").addEventListener("click", () => { PREF_TIER = PREF_TIER === "vip" ? "std" : "vip"; if(lastRoute) renderPrices(); else pintarVip(); });
 
     /* cerrar la ventana de reserva: la X, el clic en la zona oscura, y Escape (más abajo) */
     $("#bkX").addEventListener("click", closeBook);
