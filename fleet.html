@@ -40,9 +40,9 @@ else if(/^mailto:/i.test(h))gtag('event','email_click');}catch(x){}},true);
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600&display=swap" media="print" onload="this.media='all';this.onload=null">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600&display=swap"></noscript>
-<style>:root{--ink:#0B0A09;--ink-2:#131110;--ink-3:#1C1917;--ink-4:#262220;--brass:#C6A15B;--brass-hi:#E7CE95;
---brass-dim:rgba(198,161,91,.22);--brass-line:rgba(198,161,91,.30);--jade:#0F504C;--jade-hi:#63B0A9;
---bone:#F2EDE3;--muted:#A69C90;--muted-2:#8A8177;
+<style>:root{--ink:#0B0A09;--ink-2:#131110;--ink-3:#1C1917;--ink-4:#262220;--brass:#E8C44A;--brass-hi:#FFE08A;
+--brass-dim:rgba(232,196,74,.22);--brass-line:rgba(232,196,74,.30);--jade:#0F504C;--jade-hi:#63B0A9;
+--bone:#FFFFFF;--muted:#EFEAE0;--muted-2:#D8D1C4;
 --f-display:"Bodoni Moda",'Times New Roman',serif;--f-body:"Barlow",system-ui,-apple-system,sans-serif;
 --f-cond:"Barlow Condensed","Barlow",system-ui,sans-serif;--wrap:1180px;--r:3px}
 *,*::before,*::after{box-sizing:border-box}
@@ -154,7 +154,7 @@ p{margin:0}
 .stops li::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--brass-line);border-radius:50%;font-family:var(--f-cond);color:var(--brass);font-size:.9rem}
 .stops h3{font-size:1.1rem;color:var(--bone);margin-bottom:4px}
 .stops p{color:var(--muted);font-size:.93rem}
-.note{margin-top:18px;padding:12px 16px;border-left:3px solid var(--brass);background:rgba(198,161,91,.07);color:var(--muted);font-size:.92rem;border-radius:0 6px 6px 0;max-width:72ch}
+.note{margin-top:18px;padding:12px 16px;border-left:3px solid var(--brass);background:rgba(232,196,74,.07);color:var(--muted);font-size:.92rem;border-radius:0 6px 6px 0;max-width:72ch}
 .note strong{color:var(--bone)}
 .tips{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;counter-reset:t}
 .tips li{counter-increment:t;display:grid;grid-template-columns:30px 1fr;gap:10px;padding:12px 0;border-bottom:1px solid var(--ink-4);color:var(--muted);font-size:.95rem}
@@ -275,6 +275,20 @@ p{margin:0}
 .grp{margin-top:34px}
 .grp h2{font-size:clamp(1.3rem,2.2vw,1.7rem);margin-bottom:16px}</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tropicalexpertscostarica.com/"},{"@type":"ListItem","position":2,"name":"Our fleet","item":"https://www.tropicalexpertscostarica.com/fleet"}]},{"@type":"WebPage","@id":"https://www.tropicalexpertscostarica.com/fleet#page","name":"Our fleet","about":{"@id":"https://www.tropicalexpertscostarica.com/#empresa"}}]}</script>
+<style id="te-paleta">
+/* paleta de la portada en todo el sitio: dorado intenso, blancos intensos, WhatsApp fosforescente */
+.btn--solid{background:linear-gradient(180deg,#FFEDA3 0%,#F0C93F 48%,#D2A722 100%)!important;color:#1A1405!important;border-color:#F0C93F!important;font-weight:800}
+.btn--solid:hover{background:linear-gradient(180deg,#FFF3BE 0%,#F7D45A 48%,#DDB22B 100%)!important;border-color:#FFE08A!important}
+.btn--wa,.waf{background:linear-gradient(180deg,#19C95E 0%,#098436 38%,#098436 72%,#077030 100%)!important;border:1px solid #7DFFAE!important;color:#fff!important;box-shadow:0 0 0 1px rgba(57,255,122,.75),0 0 22px rgba(57,255,122,.9),0 0 50px rgba(57,255,122,.45),inset 0 1px 0 rgba(255,255,255,.45)}
+.waf{background:radial-gradient(circle at 35% 30%,#7DFFAE 0%,#2BE56F 45%,#0FB54D 100%)!important}
+.btn--wa{font-weight:800;text-shadow:0 1px 2px rgba(0,50,20,.9),0 0 2px rgba(0,50,20,.8)}
+.btn--wa:hover,.waf:hover{filter:brightness(1.15) saturate(1.2);color:#fff!important}
+.btn--wa svg,.waf svg{color:#fff;fill:#fff}
+@keyframes teWaRing{0%{box-shadow:0 0 0 0 rgba(57,255,122,.95),0 0 18px rgba(57,255,122,.75)}70%{box-shadow:0 0 0 18px rgba(57,255,122,0),0 0 30px rgba(57,255,122,.9)}100%{box-shadow:0 0 0 0 rgba(57,255,122,0),0 0 18px rgba(57,255,122,.75)}}
+@keyframes teWaGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.22) saturate(1.25)}}
+.waf{animation:teWaRing 1.8s ease-out infinite,teWaGlow 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.waf,.btn--wa{animation:none}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
