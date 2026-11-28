@@ -10,7 +10,7 @@
  * Si algún día cambia algo importante, suba el número de VERSION: eso borra
  * las copias viejas de todos los teléfonos.
  */
-const VERSION = 'te-v3';
+const VERSION = 'te-v4';
 const CACHE = 'tropical-experts-' + VERSION;
 
 // Lo mínimo para que la app abra sin señal la primera vez.

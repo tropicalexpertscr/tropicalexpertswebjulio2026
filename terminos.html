@@ -26,8 +26,8 @@ else if(/^mailto:/i.test(h))gtag('event','email_click');}catch(x){}},true);
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600&display=swap" media="print" onload="this.media='all';this.onload=null">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600&display=swap"></noscript>
 <style>
-:root{--ink:#0B0A09;--ink-2:#131110;--ink-3:#1C1917;--ink-4:#262220;--brass:#C6A15B;--brass-hi:#E7CE95;
-  --jade:#0F504C;--jade-hi:#63B0A9;--bone:#F2EDE3;--muted:#9C9287;--muted-2:#6E665D;--danger:#C25B4A;
+:root{--ink:#0B0A09;--ink-2:#131110;--ink-3:#1C1917;--ink-4:#262220;--brass:#E8C44A;--brass-hi:#FFE08A;
+  --jade:#0F504C;--jade-hi:#63B0A9;--bone:#FFFFFF;--muted:#EFEAE0;--muted-2:#D8D1C4;--danger:#C25B4A;
   --f-display:"Bodoni Moda",'Times New Roman',serif;--f-body:"Barlow",system-ui,sans-serif;--f-cond:"Barlow Condensed","Barlow",sans-serif;--r:3px}
 *,*::before,*::after{box-sizing:border-box}
 html{color-scheme:dark}
@@ -54,7 +54,7 @@ ul{margin:0 0 12px 18px;padding:0}li{margin:4px 0}
 .btn--solid:hover{background:var(--brass-hi);color:var(--ink)}
 .btn--wa{background:#25D366;border-color:#25D366;color:#062B1A}
 .btn--wa:hover{background:#3BE27A;color:#062B1A}
-.box{margin:22px 0;padding:22px 24px;border:1px solid var(--brass);border-radius:var(--r);background:rgba(198,161,91,.08)}
+.box{margin:22px 0;padding:22px 24px;border:1px solid var(--brass);border-radius:var(--r);background:rgba(232,196,74,.08)}
 .box--ok{border-color:rgba(99,176,169,.6);background:rgba(15,80,76,.18)}
 .box--bad{border-color:rgba(194,91,74,.6);background:rgba(194,91,74,.10)}
 .lbl{display:block;font-family:var(--f-cond);text-transform:uppercase;letter-spacing:.18em;font-size:.74rem;color:var(--brass)}
@@ -69,6 +69,20 @@ dt{color:var(--muted)}dd{margin:0}
 .foot{margin-top:56px;padding-top:18px;border-top:1px solid var(--ink-4);font-size:.85rem;color:var(--muted)}
 [hidden]{display:none!important}
 @media (max-width:560px){dl{grid-template-columns:1fr;gap:2px}dt{margin-top:8px}}
+</style>
+<style id="te-paleta">
+/* paleta de la portada en todo el sitio: dorado intenso, blancos intensos, WhatsApp fosforescente */
+.btn--solid{background:linear-gradient(180deg,#FFEDA3 0%,#F0C93F 48%,#D2A722 100%)!important;color:#1A1405!important;border-color:#F0C93F!important;font-weight:800}
+.btn--solid:hover{background:linear-gradient(180deg,#FFF3BE 0%,#F7D45A 48%,#DDB22B 100%)!important;border-color:#FFE08A!important}
+.btn--wa,.waf{background:linear-gradient(180deg,#19C95E 0%,#098436 38%,#098436 72%,#077030 100%)!important;border:1px solid #7DFFAE!important;color:#fff!important;box-shadow:0 0 0 1px rgba(57,255,122,.75),0 0 22px rgba(57,255,122,.9),0 0 50px rgba(57,255,122,.45),inset 0 1px 0 rgba(255,255,255,.45)}
+.waf{background:radial-gradient(circle at 35% 30%,#7DFFAE 0%,#2BE56F 45%,#0FB54D 100%)!important}
+.btn--wa{font-weight:800;text-shadow:0 1px 2px rgba(0,50,20,.9),0 0 2px rgba(0,50,20,.8)}
+.btn--wa:hover,.waf:hover{filter:brightness(1.15) saturate(1.2);color:#fff!important}
+.btn--wa svg,.waf svg{color:#fff;fill:#fff}
+@keyframes teWaRing{0%{box-shadow:0 0 0 0 rgba(57,255,122,.95),0 0 18px rgba(57,255,122,.75)}70%{box-shadow:0 0 0 18px rgba(57,255,122,0),0 0 30px rgba(57,255,122,.9)}100%{box-shadow:0 0 0 0 rgba(57,255,122,0),0 0 18px rgba(57,255,122,.75)}}
+@keyframes teWaGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.22) saturate(1.25)}}
+.waf{animation:teWaRing 1.8s ease-out infinite,teWaGlow 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.waf,.btn--wa{animation:none}}
 </style>
 </head>
 <body>
